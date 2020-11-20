@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/resultados-style.css}">
+<title th:text="${hospital.get(0).getNombre()}"></title>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="profile_img">
+			<a th:href="@{../home}"><img
+				th:src="@{/images/logo_hospitales.png}" alt=""></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<form th:action="@{/home}" method="post" class="form-inline my-2 my-lg-0">
+				<input id="busqueda" name="busqueda" type="text" class="form-control mr-sm-2"
+					placeholder="Buscar" aria-label="Search">
+				<button name="btn" type="submit"
+					class="btn btn-outline-success mr-sm-2">Buscar</button>
+			</form>
+		</div>
+	</nav>
+
+<body>
+	<div th:each="h:${hospital}">
+		<h3 th:text="${h.nombre}"></h3>
+		<h3 th:text="${h.activo}"></h3>
+		<h3 th:text="${h.servicios}"></h3>
+	</div>
+
+</body>
+</html>
