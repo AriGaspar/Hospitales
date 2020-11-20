@@ -30,7 +30,9 @@
 	<div th:each="h:${hospital}">
 		<h3 th:text="${h.nombre}"></h3>
 		<h3 th:text="${h.activo}"></h3>
-		<h3 th:text="${h.servicios}"></h3>
+		<div th:each="s:${h.servicios.split('-')}">
+			<h3 th:text="${s}"></h3>
+		</div>
 	</div>
 
 </body>

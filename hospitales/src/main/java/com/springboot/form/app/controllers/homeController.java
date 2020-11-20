@@ -63,7 +63,7 @@ public class homeController {
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
 		List<Hospital> hospital = new ArrayList<>();
 		hospitales.forEach(h -> hospital.add(h));
-		model.addAttribute("hospital", hospital);
+		model.addAttribute("hospital", hospital);//
 		return "apartado_hospital";
 	}
 
