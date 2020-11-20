@@ -41,19 +41,20 @@
 				<div class="grid-content2">
 					<br>
 					<h1>
-						Resultados de "<span th:text="${termino}"></span>"
+						Resultados de "<span style="font-style: italic;" th:text="${termino}"></span>"
 					</h1>
 					<hr>
 					<div id="card1" th:each="h:${hospitales}" class="card"
 						style="width: 18rem;" align="center">
-						<img th:src="@{/images/nose XD.PNG}" style="opacity:70%;" class="card-img-top" alt="...">
-						<div></div>
-						<div class="card-body">
-							<a th:href="@{/hospital(nombre=${h.getNombre()})}">
-								<h5 th:text="${h.getNombre()}" class="card-text" align="center"></h5>
-							</a>
-
-						</div>
+						<a th:href="@{/hospital(nombre=${h.getNombre()})}">
+							<div class="resultados">
+								<img th:src="@{/images/hospitales/} + ${h.nombre} +'.jpg'"
+									class="card-img-top" th:alt="${h.nombre}">
+							</div>
+							<div class="card-body">
+								<h4 style="color:grey;" th:text="${h.getNombre()}" class="card-text" align="center"></h4>
+							</div>
+						</a>
 					</div>
 
 					<div th:if="${hospitales.isEmpty()}">
@@ -66,5 +67,14 @@
 
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var height = $(window).height();
+
+			$('.grid-content').height(height);
+		});
+	</script>
+
 </body>
 </html>

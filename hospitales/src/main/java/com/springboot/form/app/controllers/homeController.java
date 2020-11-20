@@ -47,10 +47,10 @@ public class homeController {
 	@GetMapping("/search")
 	public String search(@RequestParam(value="busqueda",required=true) String busqueda, Model model) {
 		Stream<Hospital> hospitales = hospitales().stream()
-				.filter(h -> h.getNombre().toLowerCase().contains(busqueda.toLowerCase()));
-		List<Hospital> nombres = new ArrayList<>();
-		hospitales.forEach(h -> nombres.add(h));
-		model.addAttribute("hospitales", nombres);
+				.filter(h -> h.getNombre().toLowerCase().contains(busqueda.toLowerCase()) || h.getServicios().toLowerCase().contains(busqueda.toLowerCase()));
+		List<Hospital> hospital = new ArrayList<>();
+		hospitales.forEach(h -> hospital.add(h));
+		model.addAttribute("hospitales", hospital);
 		model.addAttribute("busqueda", busqueda);
 
 		return "search";
