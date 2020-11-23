@@ -53,23 +53,9 @@ public class homeController {
 
 		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());//Actualiza la pagina con el nombre del hospital
 	}
-//	@PostMapping("/hospital")
-//	public String addService(Hospital hospital, Model model) {
-//		List<Hospital> hospitalTemp = new ArrayList<>();
-//		hospital.setId(this._hospital.get(0).getId());
-//		hospital.setServicios(this._hospital.get(0).getServicios());
-//		hospitalTemp.add(hospital);
-//		
-//		this.setHospitalDesdePaginaHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
-//		//
-//		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());//Actualiza la pagina con el nombre del hospital
-//	}
-	
-
 
 	@ModelAttribute("termino")
 	public String termino() {
-
 		return this._termino;
 	}
 
@@ -81,13 +67,14 @@ public class homeController {
 		List<Hospital> hospital = new ArrayList<>();
 		hospitales.forEach(h -> hospital.add(h));
 		model.addAttribute("hospitales", hospital);
+		model.addAttribute("isAdmin", this._isAdmin);
 		model.addAttribute("busqueda", busqueda);
 		return "search";
 	}
 
 	@GetMapping("/hospital")
 	public String apartadoInfoHospital(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
-		this._hospital.clear();//vaciar la lista para
+		this._hospital.clear();//vaciar la lista porque solo debe de existir un elemento en la lista
 		Stream<Hospital> hospitales = this._hospitales.stream()
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
 		hospitales.forEach(h -> this._hospital.add(h));

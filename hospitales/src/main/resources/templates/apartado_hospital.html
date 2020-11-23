@@ -32,13 +32,6 @@
 </nav>
 
 <body>
-<!-- 		<div th:each="h:${hospital}"> -->
-<!-- 			<h3 th:text="${h.nombre}"></h3> -->
-<!-- 			<h3 th:text="${h.activo}"></h3> -->
-<!-- 			<div th:each="s:${h.servicios.split('-')}"> -->
-<!-- 				<h3 th:text="${s}"></h3> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
 	<div th:object="${hospital.get(0)}">
 		<div th:if="${isAdmin==false}">
 <!-- 			<div> -->
@@ -82,6 +75,7 @@
 						<label>No. Cuartos:</label> <input type="text" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}"><br>
 						<label>No. Laboratorios:</label> <input type="text" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}"><br><br>
 						<button type="submit" class="btn btn-success">Guardar datos</button>
+						<a th:href="@{/hospital(nombre=*{getNombre()})}" class="btn btn-danger"> Cancelar</a>
 					</div>
 <!-- 					<div th:each="s:*{servicios.split('-')}"> -->
 <!-- 						<label  th:text="${s}" style="margin-left: 20px" id="servicios" name="servicios"  ></label><br>										 -->
