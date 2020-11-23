@@ -1,0 +1,29 @@
+.grid-container {
+/* 	height: 100%; */
+	display: grid;
+	grid-template-columns: 1fr 75% 1fr;
+	grid-template-rows: 1fr 1fr 1fr  1fr 1fr 1fr 1fr ;
+	grid-template-areas: "c in s" 
+						 "c in s" 
+						 "c in s" 
+						 "c in s" 
+						 "c in s" 
+						 "c in s" 
+						 "c in s";
+}
+
+.grid-covid {
+	margin-top: 5px;
+	grid-area: c;
+	background-color: red;
+}
+.grid-info {
+	margin-top: 5px;
+	grid-area: in;
+	background-color: black;
+}
+.grid-services {
+	margin-top: 5px;
+	grid-area: s;
+	background-color: blue;
+}

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springboot.form.app.models.Hospital;
@@ -23,19 +24,34 @@ import com.springboot.form.app.models.Hospital;
 public class homeController {
 
 	private String _termino;
-
+	private boolean _isAdmin = true;
+	private List<Hospital> _hospitales = getHospitales();//Este es el hospital que se seleccione en los resultados
+	private List<Hospital> _hospital = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
 	@RequestMapping("/home")
 	public String home(Model model) {
 		return "home";
 	}
 
-	@PostMapping({"/home","/search","/hospital{nombre}"})
+	@PostMapping({ "/home", "/search", "/hospital{nombre}" })
 	public String getTermino(String busqueda, Model model) {
 		/* System.out.println("Lo que se busco es esto creo: "+busqueda); */
 		// model.addAttribute("termino",busqueda);
 		this._termino = busqueda;
 		System.out.println("termino: " + this._termino);
 		return "redirect:/search?busqueda=".concat(this._termino);
+	}
+	
+	@PostMapping("/hospital")
+	public String actualizarDatosHospitales(Hospital hospital, Model model) {
+		List<Hospital> hospitalTemp = new ArrayList<>();
+		hospital.setId(this._hospital.get(0).getId());
+		hospital.setServicios(this._hospital.get(0).getServicios());
+		hospitalTemp.add(hospital);
+		
+		this.setHospital(hospitalTemp);
+		
+//		return "redirect:/hospital?nombre=".concat("Hospital Santa Maria");
+		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());
 	}
 
 	@ModelAttribute("termino")
@@ -45,9 +61,10 @@ public class homeController {
 	}
 
 	@GetMapping("/search")
-	public String search(@RequestParam(value="busqueda",required=true) String busqueda, Model model) {
-		Stream<Hospital> hospitales = hospitales().stream()
-				.filter(h -> h.getNombre().toLowerCase().contains(busqueda.toLowerCase()) || h.getServicios().toLowerCase().contains(busqueda.toLowerCase()));
+	public String search(@RequestParam(value = "busqueda", required = true) String busqueda, Model model) {
+		Stream<Hospital> hospitales = this._hospitales.stream()
+				.filter(h -> h.getNombre().toLowerCase().contains(busqueda.toLowerCase())
+						|| h.getServicios().toLowerCase().contains(busqueda.toLowerCase()));
 		List<Hospital> hospital = new ArrayList<>();
 		hospitales.forEach(h -> hospital.add(h));
 		model.addAttribute("hospitales", hospital);
@@ -55,29 +72,52 @@ public class homeController {
 
 		return "search";
 	}
-	
+
 	@GetMapping("/hospital")
-	public String apartadoInfoHospital(@RequestParam(value="nombre",required=true) String nombre, Model model) {
-		
-		Stream<Hospital> hospitales = hospitales().stream()
+	public String apartadoInfoHospital(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
+		this._hospital.clear();//vaciar la lista para
+		Stream<Hospital> hospitales = this._hospitales.stream()
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
-		List<Hospital> hospital = new ArrayList<>();
-		hospitales.forEach(h -> hospital.add(h));
-		model.addAttribute("hospital", hospital);//
+		hospitales.forEach(h -> this._hospital.add(h));
+		model.addAttribute("hospital", this._hospital);//
+		model.addAttribute("isAdmin", this._isAdmin);
 		return "apartado_hospital";
 	}
 
-	public List<Hospital> hospitales() {
-		List<Hospital> hospitales = Arrays.asList(
-				new Hospital(1, "Hospital Santa Maria", true, "Calle 42", "Pediatria-Caca-Caca2-Pedos2-Pedaturbia"),
-				new Hospital(2, "Hospital Mendez", true, "Calle 542", "Pedosia-Caca-Caca2-Pedos2-Pedaturbia"),
-				new Hospital(3, "Hospital Zaragoza", false, "Calle 412", "Muerteria-Caca-Caca2-Pedos2-Pedaturbia"),
-				new Hospital(4, "Hospital CAKITO", true, "Calle 422", "Pediatria-Puerqueria-Caca2-Pedos2-Pedaturbia"),
-				new Hospital(5, "Hospital Mamaaaaaaaaaaaa", false, "Calle 52",
-						"Motoneria-Caca-Caca2-Pedos2-Pedaturbia"),
-				new Hospital(5, "Hospital Perro Atropellado", true, "Calle 32",
-						"Astigenesiologincatuquitia-Caca-Caca2-Pedos2-Pedaturbia"));
-		return hospitales;
+	public void addService() {
+		
+		
+		System.out.println("Que onda, esta es una prueba aver si esta cosa funciona jaja son las 3 am XD");
 	}
 
+	//Metodo que OBTIENE los datos de la base de datos
+	public List<Hospital> getHospitales() {//Metodo solo de prueba
+		List<Hospital> hospitales = Arrays.asList(
+				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia"),
+				new Hospital(2, "Hospital Zaragoza", "Calle 31","Merida","9421543219",1,1,4,2,1,4, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia"),
+				new Hospital(3, "Hospital CAKITO", "Calle 45","Chetumal","9876573119",9,4,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia"),
+				new Hospital(4, "Hospital Mendez", "Calle 65","Carrillo York","9276543246",4,1,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia")
+				);
+		return hospitales;
+	}
+	
+	//Metodo que MODIFICA los datos en la base de datos
+	public void setHospital(List<Hospital> hospital) {
+//		System.out.println("ID del hospital: "+hospital.get(0).getId());
+//			System.out.println("ASDASDASDA ID hospitales: "+this._hospitales.get(i).getId()+"\nID hospital: "+hospital.get(0).getId());
+			
+		
+		int index=6;
+		for (int i = 0; i < this._hospitales.size(); i++) {
+			if(this._hospitales.get(i).getId()==hospital.get(0).getId()) {
+				index=i;
+				break;
+			}
+		}
+		this._hospital=hospital;
+		System.out.println("id: " +index);
+		
+		System.out.println(this._hospital.get(0).toString());
+		this._hospitales.set(index,hospital.get(0));
+	}
 }
