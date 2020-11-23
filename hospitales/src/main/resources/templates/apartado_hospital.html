@@ -8,6 +8,8 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/resultados-style.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/hospital-style.css}">
 <title th:text="${hospital.get(0).getNombre()}"></title>
 
 </head>
@@ -57,34 +59,62 @@
 		</div>
 		<div th:if="${isAdmin}">
 			<form th:action="@{/hospital}" method="POST">
-				<div>
-					<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"> <br>
-					<label>Dirección:</label> <input type="text" id="direccion" name="direccion" th:placeholder="*{getDireccion()}" th:value="*{getDireccion()}"><br>
-					<label>Municipio:</label> <input type="text" id="municipio" name="municipio" th:placeholder="*{getMunicipio()}" th:value="*{getMunicipio()}"><br>
-					<label>Teléfono:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}">  <br>
-					<label>Director:</label> <input type="text" id="director" name="director" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"> <br>
-					<label>Subdirector:</label> <input type="text" id="subdirector" name="subdirector" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
-					<label>Administrador:</label> <input type="text" id="administrador" name="administrador" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
-					<label>No. Medicos:</label> <input type="text" id="noMedicos" name="noMedicos" th:placeholder="*{getNoMedicos()}" th:value="*{getNoMedicos()}"><br>
-					<label>No. Enfermeros:</label> <input type="text" id="noEnfermeros" name="noEnfermeros" th:placeholder="*{getNoEnfermeros()}" th:value="*{getNoEnfermeros()}"><br>
-					<label>No. Ambulancias:</label> <input type="text" id="noAmbulacias" name="noAmbulacias" th:placeholder="*{getNoAmbulacias()}" th:value="*{getNoAmbulacias()}"><br>
-					<label>No. Camillas:</label> <input type="text" id="noCamillas" name="noCamillas" th:placeholder="*{getNoCamillas()}" th:value="*{getNoCamillas()}"><br>
-					<label>No. Cuartos:</label> <input type="text" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}"><br>
-					<label>No. Laboratorios:</label> <input type="text" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}"><br><br>
+				<div class="float-container">
 					
-					<label>Servicios:</label>  
-<!--<input placeholder="Nuevo servicio"> <button th:onclick="| {addService()};return false;  |" class="btn btn-primary">Añadir</button> -->
-					
-					<div th:each="s:*{servicios.split('-')}">
-						<label  th:text="${s}" style="margin-left: 20px" type="text" id="servicios" name="servicios"  ></label><br>										
+					<div class="float-child">
+						<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
+						<label>Dirección:</label> <input type="text" id="direccion" name="direccion" th:placeholder="*{getDireccion()}" th:value="*{getDireccion()}"><br>
+						<label>Municipio:</label> <input type="text" id="municipio" name="municipio" th:placeholder="*{getMunicipio()}" th:value="*{getMunicipio()}"><br>
+						<label>Teléfono:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}">  <br>
+						<label>Director:</label> <input type="text" id="director" name="director" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"> <br>
+						<label>Subdirector:</label> <input type="text" id="subdirector" name="subdirector" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
+						<label>Administrador:</label> <input type="text" id="administrador" name="administrador" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
+						<label>Servicios:</label> <br>				
+							<textarea id="servicios"  name="servicios" th:text="*{getServicios()}" th:value="*{getServicios()}" th:placeholder="*{getServicios()}" rows="3" cols="0" >
+							</textarea>
+						<br><br><br>
 					</div>
-
+					<div class="float-child">
+						<label>No. Medicos:</label> <input type="text" id="noMedicos" name="noMedicos" th:placeholder="*{getNoMedicos()}" th:value="*{getNoMedicos()}"><br>
+						<label>No. Enfermeros:</label> <input type="text" id="noEnfermeros" name="noEnfermeros" th:placeholder="*{getNoEnfermeros()}" th:value="*{getNoEnfermeros()}"><br>
+						<label>No. Ambulancias:</label> <input type="text" id="noAmbulacias" name="noAmbulacias" th:placeholder="*{getNoAmbulacias()}" th:value="*{getNoAmbulacias()}"><br>
+						<label>No. Camillas:</label> <input type="text" id="noCamillas" name="noCamillas" th:placeholder="*{getNoCamillas()}" th:value="*{getNoCamillas()}"><br>
+						<label>No. Cuartos:</label> <input type="text" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}"><br>
+						<label>No. Laboratorios:</label> <input type="text" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}"><br><br>
+						<button type="submit" class="btn btn-success">Guardar datos</button>
+					</div>
+<!-- 					<div th:each="s:*{servicios.split('-')}"> -->
+<!-- 						<label  th:text="${s}" style="margin-left: 20px" id="servicios" name="servicios"  ></label><br>										 -->
+<!-- 					</div> -->
 				</div>
-				<button type="submit" class="btn btn-success">Guardar datos</button>
 			</form>
 		</div>
 	</div>
 	
-
+<script type="text/javascript">
+	function enviar(){
+		var servicio=document.getElementById('servicio').value;
+		var nombre=document.getElementById('nombre').value;
+		console.log("que onda");
+		$.ajax({
+		    type : "POST",
+		    url : "/hospital",
+		    data : {servicio:servicio},
+		    success : function(servicio) {
+		        console.log("SUCCESS: ", servicio);
+		        display(servicio);
+		        alert(response);   
+		    },
+		    error : function(e) {
+		        console.log("ERROR: ", e);
+		        display(e);
+		    },
+		    done : function(e) {
+		        console.log("DONE");
+		    }
+		});
+		return false;
+	}
+</script>
 </body>
 </html>

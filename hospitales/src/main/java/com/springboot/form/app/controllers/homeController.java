@@ -45,19 +45,32 @@ public class homeController {
 	public String actualizarDatosHospitales(Hospital hospital, Model model) {
 		List<Hospital> hospitalTemp = new ArrayList<>();
 		hospital.setId(this._hospital.get(0).getId());
-		hospital.setServicios(this._hospital.get(0).getServicios());
+		System.out.println("Que onda, probando esta cosa popo alv asdasdasdasd: "+hospital.getServicios());
+//		hospital.setServicios(this._hospital.get(0).getServicios());
 		hospitalTemp.add(hospital);
 		
-		this.setHospital(hospitalTemp);
-		
-//		return "redirect:/hospital?nombre=".concat("Hospital Santa Maria");
-		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());
+		this.setHospitalDesdePaginaHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
+
+		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());//Actualiza la pagina con el nombre del hospital
 	}
+//	@PostMapping("/hospital")
+//	public String addService(Hospital hospital, Model model) {
+//		List<Hospital> hospitalTemp = new ArrayList<>();
+//		hospital.setId(this._hospital.get(0).getId());
+//		hospital.setServicios(this._hospital.get(0).getServicios());
+//		hospitalTemp.add(hospital);
+//		
+//		this.setHospitalDesdePaginaHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
+//		//
+//		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());//Actualiza la pagina con el nombre del hospital
+//	}
+	
+
 
 	@ModelAttribute("termino")
 	public String termino() {
 
-		return _termino;
+		return this._termino;
 	}
 
 	@GetMapping("/search")
@@ -69,7 +82,6 @@ public class homeController {
 		hospitales.forEach(h -> hospital.add(h));
 		model.addAttribute("hospitales", hospital);
 		model.addAttribute("busqueda", busqueda);
-
 		return "search";
 	}
 
@@ -84,14 +96,10 @@ public class homeController {
 		return "apartado_hospital";
 	}
 
-	public void addService() {
-		
-		
-		System.out.println("Que onda, esta es una prueba aver si esta cosa funciona jaja son las 3 am XD");
-	}
+	
 
 	//Metodo que OBTIENE los datos de la base de datos
-	public List<Hospital> getHospitales() {//Metodo solo de prueba
+	public List<Hospital> getHospitales() {//Metodo con informacion de prueba
 		List<Hospital> hospitales = Arrays.asList(
 				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia"),
 				new Hospital(2, "Hospital Zaragoza", "Calle 31","Merida","9421543219",1,1,4,2,1,4, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia"),
@@ -102,22 +110,30 @@ public class homeController {
 	}
 	
 	//Metodo que MODIFICA los datos en la base de datos
-	public void setHospital(List<Hospital> hospital) {
+	public void setHospitalDesdePaginaHospital(List<Hospital> hospital) {
 //		System.out.println("ID del hospital: "+hospital.get(0).getId());
 //			System.out.println("ASDASDASDA ID hospitales: "+this._hospitales.get(i).getId()+"\nID hospital: "+hospital.get(0).getId());
 			
 		
-		int index=6;
+		
+		this._hospital=hospital;
+//		System.out.println("id: " +index);
+		
+//		System.out.println(this._hospital.get(0).toString());
+		this._hospitales.set(this.getIndexHospitalDeHospitales(hospital),hospital.get(0)); //se establece el hospital modificado dentro de los demas 
+	}
+	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {
 		for (int i = 0; i < this._hospitales.size(); i++) {
 			if(this._hospitales.get(i).getId()==hospital.get(0).getId()) {
-				index=i;
-				break;
+				return i;
 			}
 		}
-		this._hospital=hospital;
-		System.out.println("id: " +index);
+		return null;
+	}
+	public void addService(String servicio) {//Este metodo solo añade un servicio a la vez, pto spring >:(
+//		int i=this.getIndexHospitalDeHospitales(this._hospital);//Obtiene index del hospital actual dentro de los hospitales
+		String serviciosAnteriores=this._hospital.get(0).getServicios();
+		this._hospital.get(0).setServicios(serviciosAnteriores.concat("-"+servicio));//Se establece el nuevo servicio dentro del hospital de la lista de hospitales
 		
-		System.out.println(this._hospital.get(0).toString());
-		this._hospitales.set(index,hospital.get(0));
 	}
 }
