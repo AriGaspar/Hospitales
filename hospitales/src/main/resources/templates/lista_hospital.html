@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Lista de Hospitales</title>
+</head>
+<body>
+
+<form>
+    <h1>Hospitales</h1>
+    <table>
+    <tr>
+    <th>#</th>
+    <th>Nombre</th>
+    <th>Direcon</th>
+    <th>Municipio</th>
+    <th>Telefono</th>
+    <th>No. Medicos</th>
+    <th>No. Enfermeros</th>
+    <th>No. Ambulancias</th>
+    <th>No. Camillas</th>
+    <th>No. Cuartos</th>
+    <th>No. Laboratorios</th>
+    <th>Servicios</th>
+    <th>id_director</th>
+    <th>id_subdirector</th>
+    <th>id_administrador</th>
+    <th>id_covid</th>
+    <th>Opciones</th>
+    </tr>
+    <tr th:each="hospital:${hospitales}">
+    	<td th:text="${hospital.id}"></td>
+        <td th:text="${hospital.nombre}"></td>
+        <td th:text="${hospital.direccion}"></td>
+        <td th:text="${hospital.municipio}"></td>
+        <td th:text="${hospital.telefono}"></td>
+        <td th:text="${hospital.noMedicos}"></td>
+        <td th:text="${hospital.noEnfermeros}"></td>
+        <td th:text="${hospital.noAmbulacias}"></td>
+        <td th:text="${hospital.noCamillas}"></td>
+        <td th:text="${hospital.noCuartos}"></td>
+        <td th:text="${hospital.noLab}"></td>
+        <td th:text="${hospital.servicios}"></td>
+        <td th:text="${hospital.id_director}"></td>
+        <td th:text="${hospital.id_subdirector}"></td>
+        <td th:text="${hospital.id_administrador}"></td>
+        <td th:text="${hospital.id_covid}"></td>
+        <td><a class="" href="/eliminar?Codigo=">Eliminar</a>
+        /
+        <a href="/editar?opcion=editar&Codigo=">Editar</a></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+@charset "ISO-8859-1";
+
+.nuevoBody {
+	background-color: #E3E2E2;
+}
+
+.grid-container {
+	height: 100%;
+	display: grid;
+	grid-template-columns: 1fr 75% 1fr;
+	grid-template-rows: 100%;
+	grid-template-areas: ". c .";
+}
+
+.grid-content {
+	margin-top: 5px;
+	grid-area: c;
+	background-color: white;
+	/* 	height: 100%; */
+}
+
+.grid-container2 {
+	display: grid;
+	grid-template-columns: 1fr 75% 1fr;
+	grid-template-rows: 150vh;
+	grid-template-areas: ". c2 .";
+}
+
+.grid-content2 {
+	grid-area: c2;
+	margin-bottom: 100px;
+}
+
+.card {
+	font-family:"Gill Sans MT";
+	display: inline-block !important;
+	box-shadow: 1px 1px 10px 1px gray;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.card-text {
+	align-self: center;
+}
+
+.card-body {
+	background-color:;
+}
+
+.navbar {
+	/* box-shadow: 1px 2px 5px 1px gray; */
+	
+}
+
+h1 {
+	margin-top: 5px;
+}
+
+.profile_img {
+	width: 200px;
+	height: 80px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 100px;
+}
+
+.profile_img>a>img {
+	/* display: inline; */
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
+.profile_img>a>img:hover {
+	opacity: 60%;
+	cursor: pointer;
+}
+
+.resultados {
+	margin-top: 15px;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 100px;
+}
+
+.resultados>img {
+	/* display: inline; */
+	margin: 0 auto;
+	height: 100%;
+	width: auto;
+}
+
+.resultados>img:hover {
+	opacity: 60%;
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+	
+}
+ /* unvisited link */
+a:link {
+  color: black;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: black;
+  text-decoration: none;
+} 
