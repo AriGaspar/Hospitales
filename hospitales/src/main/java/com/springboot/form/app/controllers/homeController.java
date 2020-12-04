@@ -27,6 +27,7 @@ public class homeController {
 	private boolean _isAdmin = true;
 	private List<Hospital> _hospitales = getHospitales();//Este es el hospital que se seleccione en los resultados
 	private List<Hospital> _hospital = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
+	
 	@RequestMapping("/home")
 	public String home(Model model) {
 		return "home";
@@ -83,8 +84,8 @@ public class homeController {
 		return "apartado_hospital";
 	}
 
+	//sdas
 	
-
 	//Metodo que OBTIENE los datos de la base de datos
 	public List<Hospital> getHospitales() {//Metodo con informacion de prueba
 		List<Hospital> hospitales = Arrays.asList(
@@ -99,7 +100,7 @@ public class homeController {
 	//Metodo que MODIFICA los datos en la base de datos
 	public void setHospitalDesdePaginaHospital(List<Hospital> hospital) {
 //		System.out.println("ID del hospital: "+hospital.get(0).getId());
-//			System.out.println("ASDASDASDA ID hospitales: "+this._hospitales.get(i).getId()+"\nID hospital: "+hospital.get(0).getId());
+//		System.out.println("ASDASDASDA ID hospitales: "+this._hospitales.get(i).getId()+"\nID hospital: "+hospital.get(0).getId());
 			
 		
 		
