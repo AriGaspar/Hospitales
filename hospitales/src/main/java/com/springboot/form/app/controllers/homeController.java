@@ -23,6 +23,7 @@ import com.springboot.form.app.models.Hospital;
 @Controller
 public class homeController {
 
+	@SuppressWarnings("unused")
 	private obtenerInfoDesdeBD servicio;
 	private List<Hospital> _hospitales;//Este es el hospital que se seleccione en los resultados
 	private List<Hospital> _hospital = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
@@ -30,8 +31,7 @@ public class homeController {
 	@Autowired
 	public homeController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
 		this.servicio=servicio;
-		this._hospitales=servicio.getHospitales();
-		
+		this._hospitales=servicio.getHospitalesActuales();
 	}
 	
 	@PostMapping("/hospital")
@@ -40,9 +40,9 @@ public class homeController {
 		hospital.setId(this._hospital.get(0).getId());
 		hospitalTemp.add(hospital);
 		
-		setHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
+		servicio.setHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
 
-		return "redirect:/hospitales";//Actualiza la pagina de todos los hospitales
+		return "redirect:/list-info";//Actualiza la pagina de todos los hospitales
 	}
 
 	@GetMapping("/hospital")
@@ -56,18 +56,6 @@ public class homeController {
 	}
 
 	
-	public void setHospital(List<Hospital> hospital) {
-		this._hospital=hospital;
-		this._hospitales.set(this.getIndexHospitalDeHospitales(hospital),hospital.get(0)); //se establece el hospital modificado dentro de los demas 
-	}
-	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {
-		for (int i = 0; i < this._hospitales.size(); i++) {
-			if(this._hospitales.get(i).getId()==hospital.get(0).getId()) {
-				return i;
-			}
-		}
-		return null;
-	}
 	public void addService(String servicio) {//Este metodo solo añade un servicio a la vez, pto spring >:(
 //		int i=this.getIndexHospitalDeHospitales(this._hospital);//Obtiene index del hospital actual dentro de los hospitales
 		String serviciosAnteriores=this._hospital.get(0).getServicios();
