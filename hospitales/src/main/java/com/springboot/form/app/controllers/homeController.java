@@ -5,9 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
-import org.springframework.boot.autoconfigure.gson.GsonProperties;
-import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,54 +20,18 @@ import com.springboot.form.app.models.Hospital;
 @Controller
 public class homeController {
 
-	private String _termino;
-	private boolean _isAdmin = true;
 	private List<Hospital> _hospitales = getHospitales();//Este es el hospital que se seleccione en los resultados
 	private List<Hospital> _hospital = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
-	
-	@RequestMapping("/home")
-	public String home(Model model) {
-		return "home";
-	}
 
-	@PostMapping({ "/home", "/search", "/hospital{nombre}" })
-	public String getTermino(String busqueda, Model model) {
-		/* System.out.println("Lo que se busco es esto creo: "+busqueda); */
-		// model.addAttribute("termino",busqueda);
-		this._termino = busqueda;
-		System.out.println("termino: " + this._termino);
-		return "redirect:/search?busqueda=".concat(this._termino);
-	}
-	
 	@PostMapping("/hospital")
 	public String actualizarDatosHospitales(Hospital hospital, Model model) {
 		List<Hospital> hospitalTemp = new ArrayList<>();
 		hospital.setId(this._hospital.get(0).getId());
-		System.out.println("Que onda, probando esta cosa popo alv asdasdasdasd: "+hospital.getServicios());
-//		hospital.setServicios(this._hospital.get(0).getServicios());
 		hospitalTemp.add(hospital);
 		
-		this.setHospitalDesdePaginaHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
+		setHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
 
-		return "redirect:/hospital?nombre=".concat(this._hospital.get(0).getNombre());//Actualiza la pagina con el nombre del hospital
-	}
-
-	@ModelAttribute("termino")
-	public String termino() {
-		return this._termino;
-	}
-
-	@GetMapping("/search")
-	public String search(@RequestParam(value = "busqueda", required = true) String busqueda, Model model) {
-		Stream<Hospital> hospitales = this._hospitales.stream()
-				.filter(h -> h.getNombre().toLowerCase().contains(busqueda.toLowerCase())
-						|| h.getServicios().toLowerCase().contains(busqueda.toLowerCase()));
-		List<Hospital> hospital = new ArrayList<>();
-		hospitales.forEach(h -> hospital.add(h));
-		model.addAttribute("hospitales", hospital);
-		model.addAttribute("isAdmin", this._isAdmin);
-		model.addAttribute("busqueda", busqueda);
-		return "search";
+		return "redirect:/hospitales";//Actualiza la pagina de todos los hospitales
 	}
 
 	@GetMapping("/hospital")
@@ -80,12 +41,9 @@ public class homeController {
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
 		hospitales.forEach(h -> this._hospital.add(h));
 		model.addAttribute("hospital", this._hospital);//
-		model.addAttribute("isAdmin", this._isAdmin);
 		return "apartado_hospital";
 	}
 
-	//sdas
-	
 	//Metodo que OBTIENE los datos de la base de datos
 	public List<Hospital> getHospitales() {//Metodo con informacion de prueba
 		List<Hospital> hospitales = Arrays.asList(
@@ -98,16 +56,8 @@ public class homeController {
 	}
 	
 	//Metodo que MODIFICA los datos en la base de datos
-	public void setHospitalDesdePaginaHospital(List<Hospital> hospital) {
-//		System.out.println("ID del hospital: "+hospital.get(0).getId());
-//		System.out.println("ASDASDASDA ID hospitales: "+this._hospitales.get(i).getId()+"\nID hospital: "+hospital.get(0).getId());
-			
-		
-		
+	public void setHospital(List<Hospital> hospital) {
 		this._hospital=hospital;
-//		System.out.println("id: " +index);
-		
-//		System.out.println(this._hospital.get(0).toString());
 		this._hospitales.set(this.getIndexHospitalDeHospitales(hospital),hospital.get(0)); //se establece el hospital modificado dentro de los demas 
 	}
 	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {

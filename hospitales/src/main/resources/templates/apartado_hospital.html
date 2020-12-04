@@ -14,46 +14,10 @@
 
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="profile_img">
-		<a th:href="@{../home}"><img
-			th:src="@{/images/logo_hospitales.png}" alt=""></a>
-	</div>
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<form th:action="@{/home}" method="post"
-			class="form-inline my-2 my-lg-0">
-			<input id="busqueda" name="busqueda" type="text"
-				class="form-control mr-sm-2" placeholder="Buscar"
-				aria-label="Search">
-			<button name="btn" type="submit"
-				class="btn btn-outline-success mr-sm-2">Buscar</button>
-		</form>
-	</div>
-</nav>
-
 <body>
 	<div th:object="${hospital.get(0)}">
-		<div th:if="${isAdmin==false}">
-<!-- 			<div> -->
-<!-- 				<label>Nombre:</label> <label type="text" id="nombre" name="nombre" > asdasd</label><br> -->
-<!-- 				<label>Dirección:</label> <label type="text" id="direccion" name="direccion" >asdas</label><br> -->
-<!-- 				<label>Teléfono:</label> <label type="text" id="telefono" name="telefono" > asdas</label><br> -->
-<!-- 				<label>Director:</label> <label type="text" id="director" name="director" > asda</label><br> -->
-<!-- 				<label>Subdirector:</label> <label type="text" id="subdirector" name="subdirector" >asda</label><br> -->
-<!-- 				<label>Administrador:</label> <label type="text" id="administrador" name="administrador" >asda</label><br> -->
-				
-<!-- 				<label>Servicios:</label>   -->
-				
-<!-- <!-- 				<button th:onclick="| return false;|"  class="btn btn-primary">Añadir</button> --> -->
-<!-- 				<div th:each="s:${h.servicios.split('-')}"> -->
-<!-- 					&nbsp;&nbsp;&nbsp;<label th:text="${s}" type="text" id="servicios" name="servicios"  ></label><br>										 -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-		</div>
-		<div th:if="${isAdmin}">
 			<form th:action="@{/hospital}" method="POST">
 				<div class="float-container">
-					
 					<div class="float-child">
 						<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
 						<label>Dirección:</label> <input type="text" id="direccion" name="direccion" th:placeholder="*{getDireccion()}" th:value="*{getDireccion()}"><br>
@@ -68,47 +32,17 @@
 						<br><br><br>
 					</div>
 					<div class="float-child">
-						<label>No. Medicos:</label> <input type="text" id="noMedicos" name="noMedicos" th:placeholder="*{getNoMedicos()}" th:value="*{getNoMedicos()}"><br>
-						<label>No. Enfermeros:</label> <input type="text" id="noEnfermeros" name="noEnfermeros" th:placeholder="*{getNoEnfermeros()}" th:value="*{getNoEnfermeros()}"><br>
-						<label>No. Ambulancias:</label> <input type="text" id="noAmbulacias" name="noAmbulacias" th:placeholder="*{getNoAmbulacias()}" th:value="*{getNoAmbulacias()}"><br>
-						<label>No. Camillas:</label> <input type="text" id="noCamillas" name="noCamillas" th:placeholder="*{getNoCamillas()}" th:value="*{getNoCamillas()}"><br>
-						<label>No. Cuartos:</label> <input type="text" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}"><br>
-						<label>No. Laboratorios:</label> <input type="text" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}"><br><br>
+						<label>No. Medicos:</label> <input type="number" id="noMedicos" name="noMedicos" th:placeholder="*{getNoMedicos()}" th:value="*{getNoMedicos()}"><br>
+						<label>No. Enfermeros:</label> <input type="number" id="noEnfermeros" name="noEnfermeros" th:placeholder="*{getNoEnfermeros()}" th:value="*{getNoEnfermeros()}"><br>
+						<label>No. Ambulancias:</label> <input type="number" id="noAmbulacias" name="noAmbulacias" th:placeholder="*{getNoAmbulacias()}" th:value="*{getNoAmbulacias()}"><br>
+						<label>No. Camillas:</label> <input type="number" id="noCamillas" name="noCamillas" th:placeholder="*{getNoCamillas()}" th:value="*{getNoCamillas()}"><br>
+						<label>No. Cuartos:</label> <input type="number" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}"><br>
+						<label>No. Laboratorios:</label> <input type="number" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}"><br><br>
 						<button type="submit" class="btn btn-success">Guardar datos</button>
-						<a th:href="@{/hospital(nombre=*{getNombre()})}" class="btn btn-danger"> Cancelar</a>
+						<a th:href="@{/lista-info}" class="btn btn-danger"> Cancelar</a>
 					</div>
-<!-- 					<div th:each="s:*{servicios.split('-')}"> -->
-<!-- 						<label  th:text="${s}" style="margin-left: 20px" id="servicios" name="servicios"  ></label><br>										 -->
-<!-- 					</div> -->
 				</div>
 			</form>
-		</div>
 	</div>
-	
-<script type="text/javascript">
-	function enviar(){
-		var servicio=document.getElementById('servicio').value;
-		var nombre=document.getElementById('nombre').value;
-		console.log("que onda");
-		$.ajax({
-		    type : "POST",
-		    url : "/hospital",
-		    data : {servicio:servicio},
-		    success : function(servicio) {
-		        console.log("SUCCESS: ", servicio);
-		        display(servicio);
-		        alert(response);   
-		    },
-		    error : function(e) {
-		        console.log("ERROR: ", e);
-		        display(e);
-		    },
-		    done : function(e) {
-		        console.log("DONE");
-		    }
-		});
-		return false;
-	}
-</script>
 </body>
 </html>
