@@ -13,10 +13,6 @@ public class Persona {
 	
 	}
 
-	
-	
-	
-	
 	public Persona(Integer _codigo, String _nombre, String _titulo, String _profesion, String _email,
 			String _telefono) {
 		this._codigo = _codigo;

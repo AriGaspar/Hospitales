@@ -48,7 +48,7 @@
         <td scope="row" th:text="${hospital.id_covid}"></td>
         <td><a class="" href="/eliminar?Codigo=">Eliminar</a>
         /
-        <a href="/editar?opcion=editar&Codigo=">Editar</a></td>
+        <a th:href="@{/hospital(nombre=${hospital.nombre})}">Editar</a></td>
     </tr>
 </table>
 </form>

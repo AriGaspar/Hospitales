@@ -21,15 +21,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.springboot.form.app.models.Hospital;
 
 @Controller
-public class homeController {
+public class editController {
 
-	@SuppressWarnings("unused")
 	private obtenerInfoDesdeBD servicio;
 	private List<Hospital> _hospitales;//Este es el hospital que se seleccione en los resultados
 	private List<Hospital> _hospital = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
+	private List<Hospital> _personalG;//Este es el hospital que se seleccione en los resultados
+	private List<Hospital> _personal = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
+	private List<Hospital> _covidG;//Este es el hospital que se seleccione en los resultados
+	private List<Hospital> _covid = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
 	
 	@Autowired
-	public homeController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
+	public editController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
 		this.servicio=servicio;
 		this._hospitales=servicio.getHospitalesActuales();
 	}
@@ -42,9 +45,20 @@ public class homeController {
 		
 		servicio.setHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
 
-		return "redirect:/list-info";//Actualiza la pagina de todos los hospitales
+		return "redirect:/lista-info";//Actualiza la pagina de todos los hospitales
 	}
 
+	@GetMapping("/personal")
+	public String apartadoInfoHospital(@RequestParam(value = "id", required = true) int id, Model model) {
+//		this._hospital.clear();//vaciar la lista porque solo debe de existir un elemento en la lista
+//		Stream<Hospital> hospitales = this._hospitales.stream()
+//				.filter(h -> h.getId()==id);
+//		hospitales.forEach(h -> this._hospital.add(h));
+//		model.addAttribute("hospital", this._hospital);//
+		return "editar-personal";
+	}
+	
+	
 	@GetMapping("/hospital")
 	public String apartadoInfoHospital(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
 		this._hospital.clear();//vaciar la lista porque solo debe de existir un elemento en la lista
@@ -52,7 +66,7 @@ public class homeController {
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
 		hospitales.forEach(h -> this._hospital.add(h));
 		model.addAttribute("hospital", this._hospital);//
-		return "apartado_hospital";
+		return "editar-hospital";
 	}
 
 	
