@@ -9,15 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div th:object="${hospital.get(0)}">
-			<form th:action="@{/hospital}" method="POST">
+<div th:object="${persona.get(0)}">
+			<form th:action="@{/personal}" method="POST">
 				<div class="float-container">
 					<div class="float-child">
-						<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
-						<label>Titulo:</label> <input type="text" id="direccion" name="direccion" th:placeholder="*{getDireccion()}" th:value="*{getDireccion()}"><br>
-						<label>Profesion:</label> <input type="text" id="municipio" name="municipio" th:placeholder="*{getMunicipio()}" th:value="*{getMunicipio()}"><br>
-						<label>Correo electronico:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}">  <br>
-						<label>Telefono:</label> <input type="text" id="director" name="director" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"> <br>
+						<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{get_nombre()}" th:value="*{get_nombre()}"><br>
+						<label>Titulo:</label> <input type="text" id="titulo" name="titulo" th:placeholder="*{get_titulo()}" th:value="*{get_titulo()}"><br>
+						<label>Profesion:</label> <input type="text" id="profesion" name="profesion" th:placeholder="*{get_profesion()}" th:value="*{get_profesion()}"><br>
+						<label>Correo electronico:</label> <input type="email" id="email" name="email" th:placeholder="*{get_email()}" th:value="*{get_email()}">  <br>
+						<label>Telefono:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{get_telefono()}" th:value="*{get_telefono()}"> <br>
 						<button type="submit" class="btn btn-success">Guardar datos</button>
 						<a th:href="@{/lista-info}" class="btn btn-danger"> Cancelar</a>
 					</div>

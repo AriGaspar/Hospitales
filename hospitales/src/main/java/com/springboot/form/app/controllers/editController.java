@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springboot.form.app.models.Hospital;
+import com.springboot.form.app.models.Persona;
 
 @Controller
 public class editController {
@@ -26,10 +27,7 @@ public class editController {
 	private obtenerInfoDesdeBD servicio;
 	private List<Hospital> _hospitales;//Este es el hospital que se seleccione en los resultados
 	private List<Hospital> _hospital = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
-	private List<Hospital> _personalG;//Este es el hospital que se seleccione en los resultados
-	private List<Hospital> _personal = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
-	private List<Hospital> _covidG;//Este es el hospital que se seleccione en los resultados
-	private List<Hospital> _covid = new ArrayList<>();//Este es el hospital que se seleccione en los resultados
+	
 	
 	@Autowired
 	public editController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
@@ -49,23 +47,23 @@ public class editController {
 	}
 
 	@GetMapping("/personal")
-	public String apartadoInfoHospital(@RequestParam(value = "id", required = true) int id, Model model) {
-//		this._hospital.clear();//vaciar la lista porque solo debe de existir un elemento en la lista
-//		Stream<Hospital> hospitales = this._hospitales.stream()
-//				.filter(h -> h.getId()==id);
-//		hospitales.forEach(h -> this._hospital.add(h));
-//		model.addAttribute("hospital", this._hospital);//
+	public String editarPersona(@RequestParam(value = "id", required = true) int id, Model model) {
+		List<Persona> persona = new ArrayList<>();
+		Stream<Persona> personal = servicio.getPersonalActual().stream()
+				.filter(p -> p.get_codigo()==id);
+		personal.forEach(h -> persona.add(h));
+		model.addAttribute("persona", persona );//
 		return "editar-personal";
 	}
 	
 	
 	@GetMapping("/hospital")
-	public String apartadoInfoHospital(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
-		this._hospital.clear();//vaciar la lista porque solo debe de existir un elemento en la lista
-		Stream<Hospital> hospitales = this._hospitales.stream()
+	public String editarHospital(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
+		List<Hospital> hospitalTemp = new ArrayList<>();
+		Stream<Hospital> hospitales = this.servicio.getHospitalesActuales().stream()
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
-		hospitales.forEach(h -> this._hospital.add(h));
-		model.addAttribute("hospital", this._hospital);//
+		hospitales.forEach(h -> hospitalTemp.add(h));
+		model.addAttribute("hospital", hospitalTemp);//
 		return "editar-hospital";
 	}
 

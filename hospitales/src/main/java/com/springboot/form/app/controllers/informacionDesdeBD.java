@@ -12,7 +12,11 @@ import com.springboot.form.app.models.Persona;
 public class informacionDesdeBD implements obtenerInfoDesdeBD{
 
 	private List<Hospital> _hospitales=getHospitalesDesdeBD();
-	private List<Hospital> _personalG=getHospitalesDesdeBD();
+	public List<Hospital> _hospital;
+	private List<Persona> _personalG=getPersonalDesdeBD();
+	public List<Hospital> _personal=getHospitalesDesdeBD();
+	private List<Hospital> _covidG=getHospitalesDesdeBD();
+	public List<Hospital> _covid=getHospitalesDesdeBD();
 	
 	//Metodo que OBTIENE los datos de la base de datos
 	@Override
@@ -28,12 +32,12 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	public List<Persona> getPersonalDesdeBD() {
 		List<Persona> personas = Arrays.asList(
 				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432")
+				new Persona(2,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
+				new Persona(3,"Eduardo May","Doctorado","Medico","pedro@gmail.com","9831235432"),
+				new Persona(4,"Albert May","Doctorado","Medico","pedro@gmail.com","9831235432"),
+				new Persona(5,"Mario May","Doctorado","Medico","pedro@gmail.com","9831235432"),
+				new Persona(6,"MArcos May","Doctorado","Medico","pedro@gmail.com","9831235432"),
+				new Persona(7,"Carlos May","Doctorado","Medico","pedro@gmail.com","9831235432")
 				);
 		return personas;
 	}
@@ -42,6 +46,7 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	public void setHospital(List<Hospital> hospital) {
 		this._hospitales.set(this.getIndexHospitalDeHospitales(hospital),hospital.get(0)); //se establece el hospital modificado dentro de los demas 
 	}
+
 	
 	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {
 		for (int i = 0; i < this._hospitales.size(); i++) {
@@ -56,6 +61,17 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	@Override
 	public List<Hospital> getHospitalesActuales() {
 		return this._hospitales;
+	}
+	@Override
+	public List<Persona> getPersonalActual() {
+		return this._personalG;
+	}
+	public List<Hospital> getHospitalActual() {
+		return this._hospitales;
+	}
+	@Override
+	public void vaciarHospital() {
+		_hospital.clear();
 	}
 
 }
