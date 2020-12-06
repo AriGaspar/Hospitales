@@ -1,5 +1,6 @@
 package com.springboot.form.app.controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,38 +14,60 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 
 	private List<Hospital> _hospitales=getHospitalesDesdeBD();
 	public List<Hospital> _hospital;
-	private List<Persona> _personalG=getPersonalDesdeBD();
-	public List<Hospital> _personal=getHospitalesDesdeBD();
-	private List<Hospital> _covidG=getHospitalesDesdeBD();
-	public List<Hospital> _covid=getHospitalesDesdeBD();
+
 	
 	//Metodo que OBTIENE los datos de la base de datos
 	@Override
 	public List<Hospital> getHospitalesDesdeBD() {
 		List<Hospital> hospitales = Arrays.asList(
-				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 1,4,2,3),
-				new Hospital(2, "Hospital Zaragoza", "Calle 31","Merida","9421543219",1,1,4,2,1,4, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 3,4,2,6),
-				new Hospital(3, "Hospital CAKITO", "Calle 45","Chetumal","9876573119",9,4,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 3,6,2,7),
-				new Hospital(4, "Hospital Mendez", "Calle 65","Carrillo York","9276543246",4,1,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 2,8,1,7)
-				);
+				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
+						new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
+						new Persona(23,"Tendor Yam","Doctorado","Medico","tendor@gmail.com","9831235432"),
+						new Persona(14,"Eduardo May","Doctorado","Medico","eduardo@gmail.com","9831235432"),3),
+				new Hospital(2, "Hospital Zaragoza", "Calle 31","Merida","9421543219",1,1,4,2,1,4, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
+						new Persona(21,"Albert May","Doctorado","Medico","albert@gmail.com","9831235432"),
+						new Persona(12,"Mario May","Doctorado","Medico","mario@gmail.com","9831235432"),
+						new Persona(4,"MArcos May","Doctorado","Medico","marcos@gmail.com","9831235432"),6),
+				new Hospital(3, "Hospital CAKITO", "Calle 45","Chetumal","9876573119",9,4,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
+						new Persona(55,"Kiko May","Maestria","Medico","marcos@gmail.com","9831235432"),
+						new Persona(323,"Manuel Tamay","Pedos","Medico","marcos@gmail.com","9831235432"),
+						new Persona(31,"Carlos May","Popo","Medico","pedro@gmail.com","9831235432"),7),
+				new Hospital(4, "Hospital Mendez", "Calle 65","Carrillo York","9276543246",4,1,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
+						new Persona(432,"Marquitos Mendez","Maestria","Medico","marcos@gmail.com","9831235432"),
+						new Persona(42,"Juan Marquez","Pedos","Medico","marcos@gmail.com","9831235432"),
+						new Persona(46,"Jose Tun","Nose","Medico","pedro@gmail.com","9831235432"),7)
+				); 
+		
+		for (int i = 0; i < hospitales.size(); i++) {
+			hospitales.get(i).get_director().set_deHospital(hospitales.get(i).getNombre());
+			hospitales.get(i).get_subdirector().set_deHospital(hospitales.get(i).getNombre());
+			hospitales.get(i).get_administrador().set_deHospital(hospitales.get(i).getNombre());
+		}
+		
 		return hospitales;
 	}
-	public List<Persona> getPersonalDesdeBD() {
-		List<Persona> personas = Arrays.asList(
-				new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(2,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(3,"Eduardo May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(4,"Albert May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(5,"Mario May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(6,"MArcos May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-				new Persona(7,"Carlos May","Doctorado","Medico","pedro@gmail.com","9831235432")
-				);
-		return personas;
-	}
-	
+
 	//Metodo que MODIFICA los datos en la base de datos
 	public void setHospital(List<Hospital> hospital) {
 		this._hospitales.set(this.getIndexHospitalDeHospitales(hospital),hospital.get(0)); //se establece el hospital modificado dentro de los demas 
+	}
+	public void setDirector(Persona director) {
+		this._hospital.get(0).set_director(director); //se establece el hospital modificado dentro de los demas 
+	}
+	public void setSubdirector(Persona subdirector) {
+		this._hospital.get(0).set_subdirector(subdirector); //se establece el hospital modificado dentro de los demas 
+	}
+	public void setAdministrador(Persona administrador) {
+		this._hospital.get(0).set_administrador(administrador); //se establece el hospital modificado dentro de los demas 
+	}
+	public Persona getDirector() {
+		return this._hospital.get(0).get_director();
+	}
+	public Persona getSubdirector() {
+		return this._hospital.get(0).get_subdirector();
+	}
+	public Persona getAdministrador() {
+		return this._hospital.get(0).get_administrador();
 	}
 
 	
@@ -57,21 +80,17 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 		return null;
 	}
 	
-	
 	@Override
 	public List<Hospital> getHospitalesActuales() {
 		return this._hospitales;
 	}
-	@Override
-	public List<Persona> getPersonalActual() {
-		return this._personalG;
-	}
+	
 	public List<Hospital> getHospitalActual() {
-		return this._hospitales;
+		return this._hospital;
 	}
-	@Override
-	public void vaciarHospital() {
-		_hospital.clear();
+	public void setHospitalActual(List<Hospital> _hospital) {
+		this._hospital=_hospital;
 	}
+
 
 }

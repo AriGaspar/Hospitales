@@ -38,40 +38,57 @@ public class editController {
 	@PostMapping("/hospital")
 	public String actualizarDatosHospitales(Hospital hospital, Model model) {
 		List<Hospital> hospitalTemp = new ArrayList<>();
-		hospital.setId(this._hospital.get(0).getId());
+		
+		hospital.setId(servicio.getHospitalActual().get(0).getId());
 		hospitalTemp.add(hospital);
 		
 		servicio.setHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
 
 		return "redirect:/lista-info";//Actualiza la pagina de todos los hospitales
 	}
+	@PostMapping("/personal")
+	public String actualizarDatosPersonal(Persona persona, Model model) {
+		System.out.println("nose: "+persona.get_nombre());
+		List<Persona> personaTemp = new ArrayList<>();
+//		persona.set_codigo(servicio.getHospitalActual().get(0).get_director());
+//		personaTemp.add(persona);
+		
+		return "redirect:/lista-personal";//Actualiza la pagina de todos los hospitales
+	}
 
 	@GetMapping("/personal")
-	public String editarPersona(@RequestParam(value = "id", required = true) int id, Model model) {
-		List<Persona> persona = new ArrayList<>();
-		Stream<Persona> personal = servicio.getPersonalActual().stream()
-				.filter(p -> p.get_codigo()==id);
-		personal.forEach(h -> persona.add(h));
-		model.addAttribute("persona", persona );//
+	public String editarPersona(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
+		List<Persona> personaTemp = new ArrayList<>();
+		Stream<Hospital> hospitales = this.servicio.getHospitalesActuales().stream()
+				.filter(h -> h.get_director().get_nombre().toLowerCase().equals(nombre.toLowerCase()) ||
+							 h.get_subdirector().get_nombre().toLowerCase().equals(nombre.toLowerCase()) ||
+							 h.get_administrador().get_nombre().toLowerCase().equals(nombre.toLowerCase()));
+		
+		hospitales.forEach(h -> {
+			if(h.get_director().get_nombre().equals(nombre)) {
+				personaTemp.add(h.get_director());
+			}else if(h.get_subdirector().get_nombre().equals(nombre)) {
+				personaTemp.add(h.get_subdirector());
+			}else if(h.get_administrador().get_nombre().equals(nombre)) {
+				personaTemp.add(h.get_administrador());
+			}
+		});
+		
+		model.addAttribute("persona", personaTemp.get(0));//
 		return "editar-personal";
 	}
 	
 	
 	@GetMapping("/hospital")
 	public String editarHospital(@RequestParam(value = "nombre", required = true) String nombre, Model model) {
+		servicio.getHospitalActual().clear();
 		List<Hospital> hospitalTemp = new ArrayList<>();
 		Stream<Hospital> hospitales = this.servicio.getHospitalesActuales().stream()
 				.filter(h -> h.getNombre().toLowerCase().equals(nombre.toLowerCase()));
 		hospitales.forEach(h -> hospitalTemp.add(h));
+		servicio.setHospitalActual(hospitalTemp);
 		model.addAttribute("hospital", hospitalTemp);//
 		return "editar-hospital";
 	}
 
-	
-	public void addService(String servicio) {//Este metodo solo añade un servicio a la vez, pto spring >:(
-//		int i=this.getIndexHospitalDeHospitales(this._hospital);//Obtiene index del hospital actual dentro de los hospitales
-		String serviciosAnteriores=this._hospital.get(0).getServicios();
-		this._hospital.get(0).setServicios(serviciosAnteriores.concat("-"+servicio));//Se establece el nuevo servicio dentro del hospital de la lista de hospitales
-		
-	}
 }

@@ -9,10 +9,12 @@ public interface obtenerInfoDesdeBD {
 	
 	public List<Hospital> getHospitalesDesdeBD();
 	public List<Hospital> getHospitalesActuales();
-	public void vaciarHospital();
 	public void setHospital(List<Hospital> hospital);
-	public List<Persona> getPersonalActual();
-	
+	public void setDirector(Persona persona);
+	public void setSubdirector(Persona subdirector);
+	public void setAdministrador(Persona administrador);
+
+	public void setHospitalActual(List<Hospital> _hospital);
 	public List<Hospital> getHospitalActual();
 
 	

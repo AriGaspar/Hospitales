@@ -8,6 +8,7 @@ public class Persona {
 	private String _profesion;
 	private String _email;
 	private String _telefono;
+	private String _dehospital;
 	
 	public Persona() {
 	
@@ -23,10 +24,7 @@ public class Persona {
 		this._telefono = _telefono;
 	}
 
-
-
-
-
+	
 	public Integer get_codigo() {
 		return _codigo;
 	}
@@ -73,6 +71,14 @@ public class Persona {
 
 	public void set_telefono(String _telefono) {
 		this._telefono = _telefono;
+	}
+	
+	public String get_deHospital() {
+		return this._dehospital;
+	}
+
+	public void set_deHospital(String _dehospital) {
+		this._dehospital = _dehospital;
 	}
 	
 	
