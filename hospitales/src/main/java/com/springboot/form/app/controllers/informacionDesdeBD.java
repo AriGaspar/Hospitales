@@ -44,6 +44,9 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 				); 
 		
 		for (int i = 0; i < hospitales.size(); i++) {
+			
+			hospitales.get(i).get_covid().setDeHospital(hospitales.get(i).getNombre());
+			
 			hospitales.get(i).get_director().setDeHospital(hospitales.get(i).getNombre());
 			hospitales.get(i).get_director().setCargo("Director");
 			

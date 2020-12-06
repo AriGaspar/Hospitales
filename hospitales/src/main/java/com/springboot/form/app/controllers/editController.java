@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springboot.form.app.models.Covid;
 import com.springboot.form.app.models.Hospital;
 import com.springboot.form.app.models.Persona;
 
@@ -62,6 +63,26 @@ public class editController {
 		return "redirect:/lista-personal";//Actualiza la pagina de todos los hospitales
 	}
 
+	@PostMapping("/covid")
+	public String actualizarDatosCovid(@ModelAttribute Covid covid , Model model) {
+		System.out.println("asdasd: "+ covid.getId());
+		servicio.getHospitalActual().get(0).set_covid(covid);
+		
+		return "redirect:/lista-covid";//Actualiza la pagina de todos los hospitales
+	}
+	
+	@GetMapping("/covid")
+	public String editarCovid(@RequestParam(value = "id", required = true) Integer id, Model model) {
+		servicio.vaciarHospitalActual();
+		List<Hospital> hospitalTemp = new ArrayList<>();
+		Stream<Hospital> hospitales = this.servicio.getHospitalesActuales().stream()
+				.filter(h -> h.get_covid().getId()==id);
+		hospitales.forEach(h -> hospitalTemp.add(h));
+		servicio.setHospitalActual(hospitalTemp);
+		model.addAttribute("covid", hospitalTemp.get(0).get_covid());//
+		return "editar-covid";
+	}
+	
 	@GetMapping("/personal")
 	public String editarPersona(@RequestParam(value = "id", required = true) int id, Model model) {
 		

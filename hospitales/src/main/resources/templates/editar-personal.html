@@ -17,12 +17,24 @@
 					<br>
 				<div class="float-child" style="margin-top: 2em;">
 					<input th:field="*{codigo}" type="hidden" id="codigo" name="codigo" th:placeholder="*{getCodigo()}" th:value="*{getCodigo()}">
+					
 					<input th:field="*{cargo}" type="hidden" id="cargo" name="cargo" th:placeholder="*{getCargo()}" th:value="*{getCargo()}">
-					<label>Nombre:</label> <input th:field="*{nombre}" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
-					<label>Titulo:</label> <input th:field="*{titulo}" type="text" id="titulo" name="titulo" th:placeholder="*{getTitulo()}" th:value="*{getTitulo()}"><br>
-					<label>Profesion:</label> <input th:field="*{profesion}" type="text" id="profesion" name="profesion" th:placeholder="*{getProfesion()}" th:value="*{getProfesion()}"><br>
-					<label>Correo electronico:</label> <input th:field="*{email}" type="text" id="email" name="email" th:placeholder="*{getEmail()}" th:value="*{getEmail()}">  <br>
-					<label>Telefono:</label> <input th:field="*{telefono}" type="text" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}"> <br>
+					
+					<label>Nombre:</label> 
+					<input maxlength="20" th:field="*{nombre}" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
+					
+					<label>Titulo:</label> 
+					<input maxlength="30" th:field="*{titulo}" type="text" id="titulo" name="titulo" th:placeholder="*{getTitulo()}" th:value="*{getTitulo()}"><br>
+					
+					<label>Profesion:</label> 
+					<input maxlength="30" th:field="*{profesion}" type="text" id="profesion" name="profesion" th:placeholder="*{getProfesion()}" th:value="*{getProfesion()}"><br>
+					
+					<label>Correo electronico:</label> 
+					<input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" th:field="*{email}" type="email" id="email" name="email" th:placeholder="*{getEmail()}" th:value="*{getEmail()}">  <br>
+					
+					<label>Telefono:</label> 
+					<input th:field="*{telefono}" type="text" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}"> <br>
+					
 					<input type="submit" class="btn btn-success" value="Guardar datos">
 					<a th:href="@{/lista-personal}" class="btn btn-danger">Cancelar</a>
 				</div>

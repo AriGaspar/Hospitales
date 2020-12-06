@@ -36,7 +36,7 @@ public class Covid {
 		this.deHospital = deHospital;
 	}
 	
-	public String getDeHospitales() {
+	public String getDeHospital() {
 		return this.deHospital;
 	}
 
