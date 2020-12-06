@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+body {
+	font-family: Gill Sans MT !important;
+	color: #E8F9FD !important;
+	background-color: #E8F9FD;
+}
+
+.invertir-color {
+     -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.bg-custom {
+    background-color: #3CABC7;
+}
+
+.drop { 
+	filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7)); 
+}
+
+.table {
+	text-align: center; 
+	border:0px !important;
+	background-color: white;
+	border-spacing: 15px !important;
+	color: #3CABC7 !important;
+	width: 93%;
+	margin:3em;
+}
+.drop-table { 
+	filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); 
+}

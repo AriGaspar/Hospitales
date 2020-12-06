@@ -55,7 +55,7 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 			
 			hospitales.get(i).get_administrador().setDeHospital(hospitales.get(i).getNombre());
 			hospitales.get(i).get_administrador().setCargo("Administrador");
-		}
+		}//
 		
 		return hospitales;
 	}
