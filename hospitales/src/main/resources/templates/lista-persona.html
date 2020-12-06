@@ -19,16 +19,14 @@
 	    <th scope="col">Telefono</th>
     </tr>
     <tr th:each="persona:${personal}">
-    	<td  scope="row" th:text="${persona._codigo}"></td>
-        <td scope="row" th:text="${persona._nombre}"></td>
-        <td scope="row" th:text="${persona._titulo}"></td>
-        <td scope="row" th:text="${persona._profesion}"></td>
-        <td scope="row" th:text="${persona._email}"></td>
-        <td scope="row" th:text="${persona._telefono}"></td>
+    	<td  scope="row" th:text="${persona.codigo}"></td>
+        <td scope="row" th:text="${persona.nombre}"></td>
+        <td scope="row" th:text="${persona.titulo}"></td>
+        <td scope="row" th:text="${persona.profesion}"></td>
+        <td scope="row" th:text="${persona.email}"></td>
+        <td scope="row" th:text="${persona.telefono}"></td>
         
-        <td><a class="" href="/eliminar?code=persona._codigo=">Eliminar</a>
-        /
-        <a th:href="@{/personal(nombre=${persona._nombre})}">Editar</a></td>
+        <td><a th:href="@{/personal(id=${persona.codigo})}">Editar</a></td>
     </tr>
 </table>
 </form>

@@ -10,38 +10,23 @@
 </head>
 <body style="background-color: gray;">
 	<div>
-		<form th:action="@{/personal}" method="POST">
-			<div class="float-container" style="display: grid; place-items:center;margin-top:5em; ">
-					<h2>Director</h2>
-					<h5 th:text="${persona.get_deHospital()}"></h5>
+		<form th:object="${persona}" th:action="@{/personal}" method="post">
+			<div class="float-container" style="display: grid; place-items:center; margin-top:5em; ">
+					<h2 th:text="${persona.getCargo()}"></h2>
+					<h5 th:text="${persona.getDeHospital()}"></h5>
 					<br>
-				<div th:object="${persona}" class="float-child" style="margin-top: 2em;">
-					<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{get_nombre()}" th:value="*{get_nombre()}"><br>
-					<label>Titulo:</label> <input type="text" id="titulo" name="titulo" th:placeholder="*{get_titulo()}" th:value="*{get_titulo()}"><br>
-					<label>Profesion:</label> <input type="text" id="profesion" name="profesion" th:placeholder="*{get_profesion()}" th:value="*{get_profesion()}"><br>
-					<label>Correo electronico:</label> <input type="email" id="email" name="email" th:placeholder="*{get_email()}" th:value="*{get_email()}">  <br>
-					<label>Telefono:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{get_telefono()}" th:value="*{get_telefono()}"> <br>
+				<div class="float-child" style="margin-top: 2em;">
+					<input th:field="*{codigo}" type="hidden" id="codigo" name="codigo" th:placeholder="*{getCodigo()}" th:value="*{getCodigo()}">
+					<input th:field="*{cargo}" type="hidden" id="cargo" name="cargo" th:placeholder="*{getCargo()}" th:value="*{getCargo()}">
+					<label>Nombre:</label> <input th:field="*{nombre}" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
+					<label>Titulo:</label> <input th:field="*{titulo}" type="text" id="titulo" name="titulo" th:placeholder="*{getTitulo()}" th:value="*{getTitulo()}"><br>
+					<label>Profesion:</label> <input th:field="*{profesion}" type="text" id="profesion" name="profesion" th:placeholder="*{getProfesion()}" th:value="*{getProfesion()}"><br>
+					<label>Correo electronico:</label> <input th:field="*{email}" type="text" id="email" name="email" th:placeholder="*{getEmail()}" th:value="*{getEmail()}">  <br>
+					<label>Telefono:</label> <input th:field="*{telefono}" type="text" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}"> <br>
+					<input type="submit" class="btn btn-success" value="Guardar datos">
+					<a th:href="@{/lista-personal}" class="btn btn-danger">Cancelar</a>
 				</div>
-<!-- 				<br> -->
-<!-- 				<h2>Subdirector</h2> -->
-<!-- 				<div th:object="${hospital.get(0).get_subdirector()}" class="float-child"> -->
-<!-- 					<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{get_nombre()}" th:value="*{get_nombre()}"><br> -->
-<!-- 					<label>Titulo:</label> <input type="text" id="titulo" name="titulo" th:placeholder="*{get_titulo()}" th:value="*{get_titulo()}"><br> -->
-<!-- 					<label>Profesion:</label> <input type="text" id="profesion" name="profesion" th:placeholder="*{get_profesion()}" th:value="*{get_profesion()}"><br> -->
-<!-- 					<label>Correo electronico:</label> <input type="email" id="email" name="email" th:placeholder="*{get_email()}" th:value="*{get_email()}">  <br> -->
-<!-- 					<label>Telefono:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{get_telefono()}" th:value="*{get_telefono()}"> <br> -->
-<!-- 				</div> -->
-<!-- 				<br> -->
-<!-- 				<h2>Administrador</h2> -->
-<!-- 				<div th:object="${hospital.get(0).get_administrador()}" class="float-child"> -->
-<!-- 					<label>Nombre:</label> <input type="text" id="nombre" name="nombre" th:placeholder="*{get_nombre()}" th:value="*{get_nombre()}"><br> -->
-<!-- 					<label>Titulo:</label> <input type="text" id="titulo" name="titulo" th:placeholder="*{get_titulo()}" th:value="*{get_titulo()}"><br> -->
-<!-- 					<label>Profesion:</label> <input type="text" id="profesion" name="profesion" th:placeholder="*{get_profesion()}" th:value="*{get_profesion()}"><br> -->
-<!-- 					<label>Correo electronico:</label> <input type="email" id="email" name="email" th:placeholder="*{get_email()}" th:value="*{get_email()}">  <br> -->
-<!-- 					<label>Telefono:</label> <input type="text" id="telefono" name="telefono" th:placeholder="*{get_telefono()}" th:value="*{get_telefono()}"> <br> -->
-<!-- 				</div> -->
-				<button type="submit" class="btn btn-success">Guardar datos</button>
-				<a th:href="@{/lista-personal}" class="btn btn-danger"> Cancelar</a>
+
 			</div>
 		</form>
 	</div>

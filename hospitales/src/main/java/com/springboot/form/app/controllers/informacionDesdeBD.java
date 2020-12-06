@@ -13,7 +13,7 @@ import com.springboot.form.app.models.Persona;
 public class informacionDesdeBD implements obtenerInfoDesdeBD{
 
 	private List<Hospital> _hospitales=getHospitalesDesdeBD();
-	public List<Hospital> _hospital;
+	public List<Hospital> _hospital=new ArrayList<Hospital>();
 
 	
 	//Metodo que OBTIENE los datos de la base de datos
@@ -21,27 +21,32 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	public List<Hospital> getHospitalesDesdeBD() {
 		List<Hospital> hospitales = Arrays.asList(
 				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(1,"Pedro May","Doctorado","Medico","pedro@gmail.com","9831235432"),
-						new Persona(23,"Tendor Yam","Doctorado","Medico","tendor@gmail.com","9831235432"),
-						new Persona(14,"Eduardo May","Doctorado","Medico","eduardo@gmail.com","9831235432"),3),
+						new Persona(1,"Pedro May","Administración de Empresas","Medico","pedro@gmail.com","9831235432"),
+						new Persona(23,"Tendor Yam","Química de Empresas","Medico","tendor@gmail.com","9831235432"),
+						new Persona(14,"Eduardo May","Administración de Empresas","Medico","eduardo@gmail.com","9831235432"),3),
 				new Hospital(2, "Hospital Zaragoza", "Calle 31","Merida","9421543219",1,1,4,2,1,4, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(21,"Albert May","Doctorado","Medico","albert@gmail.com","9831235432"),
-						new Persona(12,"Mario May","Doctorado","Medico","mario@gmail.com","9831235432"),
-						new Persona(4,"MArcos May","Doctorado","Medico","marcos@gmail.com","9831235432"),6),
+						new Persona(21,"Albert May","Administración de Empresas","Medico","albert@gmail.com","9831235432"),
+						new Persona(12,"Mario May","Química de Empresas","Medico","mario@gmail.com","9831235432"),
+						new Persona(4,"MArcos May","Administración de Empresas","Medico","marcos@gmail.com","9831235432"),6),
 				new Hospital(3, "Hospital CAKITO", "Calle 45","Chetumal","9876573119",9,4,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(55,"Kiko May","Maestria","Medico","marcos@gmail.com","9831235432"),
-						new Persona(323,"Manuel Tamay","Pedos","Medico","marcos@gmail.com","9831235432"),
-						new Persona(31,"Carlos May","Popo","Medico","pedro@gmail.com","9831235432"),7),
+						new Persona(55,"Kiko May","Administración de Empresas","Medico","marcos@gmail.com","9831235432"),
+						new Persona(323,"Manuel Tamay","Química","Medico","marcos@gmail.com","9831235432"),
+						new Persona(31,"Carlos May","Química","Medico","pedro@gmail.com","9831235432"),7),
 				new Hospital(4, "Hospital Mendez", "Calle 65","Carrillo York","9276543246",4,1,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(432,"Marquitos Mendez","Maestria","Medico","marcos@gmail.com","9831235432"),
-						new Persona(42,"Juan Marquez","Pedos","Medico","marcos@gmail.com","9831235432"),
-						new Persona(46,"Jose Tun","Nose","Medico","pedro@gmail.com","9831235432"),7)
+						new Persona(432,"Marquitos Mendez","Química","Medico","marcos@gmail.com","9831235432"),
+						new Persona(42,"Juan Marquez","Química","Medico","marcos@gmail.com","9831235432"),
+						new Persona(46,"Jose Tun","Química","Medico","pedro@gmail.com","9831235432"),7)
 				); 
 		
 		for (int i = 0; i < hospitales.size(); i++) {
-			hospitales.get(i).get_director().set_deHospital(hospitales.get(i).getNombre());
-			hospitales.get(i).get_subdirector().set_deHospital(hospitales.get(i).getNombre());
-			hospitales.get(i).get_administrador().set_deHospital(hospitales.get(i).getNombre());
+			hospitales.get(i).get_director().setDeHospital(hospitales.get(i).getNombre());
+			hospitales.get(i).get_director().setCargo("Director");
+			
+			hospitales.get(i).get_subdirector().setDeHospital(hospitales.get(i).getNombre());
+			hospitales.get(i).get_subdirector().setCargo("Subdirector");
+			
+			hospitales.get(i).get_administrador().setDeHospital(hospitales.get(i).getNombre());
+			hospitales.get(i).get_administrador().setCargo("Administrador");
 		}
 		
 		return hospitales;
@@ -69,7 +74,6 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	public Persona getAdministrador() {
 		return this._hospital.get(0).get_administrador();
 	}
-
 	
 	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {
 		for (int i = 0; i < this._hospitales.size(); i++) {
@@ -92,5 +96,8 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 		this._hospital=_hospital;
 	}
 
+	public void vaciarHospitalActual() {
+		this._hospital.clear();
+	}
 
 }

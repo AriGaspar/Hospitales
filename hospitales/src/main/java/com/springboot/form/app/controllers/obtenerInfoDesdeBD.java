@@ -16,6 +16,8 @@ public interface obtenerInfoDesdeBD {
 
 	public void setHospitalActual(List<Hospital> _hospital);
 	public List<Hospital> getHospitalActual();
+	public void vaciarHospitalActual();
+	
 
 	
 }

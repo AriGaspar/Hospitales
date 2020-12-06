@@ -39,11 +39,6 @@
         <td scope="row" th:text="${hospital.noCuartos}"></td>
         <td scope="row" th:text="${hospital.noLab}"></td>
         <td scope="row" th:text="${hospital.getServiciosSeparadosSaltosLinea()}"></td>
-<!--         <td scope="row" th:each="s:${hospital.servicios.split('-')}"><div style="width:60px"><label th:text="${s}" type="text" id="servicios" name="servicios"><br></label><br></div></td> -->
-<!--         <td scope="row" th:text="${hospital.id_director}"></td> -->
-<!--         <td scope="row" th:text="${hospital.id_subdirector}"></td> -->
-<!--         <td scope="row" th:text="${hospital.id_administrador}"></td> -->
-<!--         <td scope="row" th:text="${hospital.id_covid}"></td> -->
         <td><a class="" href="/eliminar?Codigo=">Eliminar</a>
         /
         <a th:href="@{/hospital(nombre=${hospital.nombre})}">Editar</a></td>
