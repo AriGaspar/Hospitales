@@ -22,14 +22,14 @@ public class Hospital	{
 	private Persona director;
 	private Persona subdirector;
 	private Persona administrador;
-	private Integer id_covid;
+	private Covid covid;
 	
 	public Hospital() {
 		
 	}
 	public Hospital(Integer id, String nombre, String direccion, String municipio, String telefono, Integer noMedicos,
 			Integer noEnfermeros, Integer noAmbulacias, Integer noCamillas, Integer noCuartos, Integer noLab,
-			String servicios, Persona director,Persona subdirector,Persona administrador , Integer id_covid) {
+			String servicios, Persona director,Persona subdirector,Persona administrador , Covid covid) {
 		this.id = id;
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -45,7 +45,7 @@ public class Hospital	{
 		this.director = director;
 		this.subdirector = subdirector;
 		this.administrador = administrador;
-		this.id_covid = id_covid;
+		this.covid =covid;
 	}
 
 	
@@ -170,12 +170,12 @@ public class Hospital	{
 		this.administrador = administrador;
 	}
 	
-	public Integer getId_covid() {
-		return id_covid;
+	public Covid get_covid() {
+		return this.covid;
 	}
 	
-	public void setId_covid(Integer id_covid) {
-		this.id_covid = id_covid;
+	public void set_covid(Covid covid) {
+		this.covid = covid;
 	}
 	
 	public String getServiciosSeparadosSaltosLinea() {
