@@ -23,9 +23,6 @@ import com.springboot.form.app.models.Persona;
 public class editController {
 
 	private obtenerInfoDesdeBD servicio;
-
-	
-	
 	@Autowired
 	public editController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
 		this.servicio=servicio;
