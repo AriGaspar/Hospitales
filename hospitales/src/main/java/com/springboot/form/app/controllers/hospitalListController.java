@@ -16,7 +16,7 @@ public class hospitalListController {
 	public String mostrarDatosHospitales(Model model) {
 		
 		model.addAttribute("hospitales", getHospitales());
-
+ 
 		return "lista_hospital";
 	}
 
