@@ -19,17 +19,17 @@ public class Hospital	{
 
 	private String servicios;
 	
-	private Integer id_director;
-	private Integer id_subdirector;
-	private Integer id_administrador;
-	private Integer id_covid;
+	private Persona director;
+	private Persona subdirector;
+	private Persona administrador;
+	private Covid covid;
 	
 	public Hospital() {
 		
 	}
 	public Hospital(Integer id, String nombre, String direccion, String municipio, String telefono, Integer noMedicos,
 			Integer noEnfermeros, Integer noAmbulacias, Integer noCamillas, Integer noCuartos, Integer noLab,
-			String servicios, Integer id_director, Integer id_subdirector, Integer id_administrador, Integer id_covid) {
+			String servicios, Persona director,Persona subdirector,Persona administrador , Covid covid) {
 		this.id = id;
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -42,20 +42,13 @@ public class Hospital	{
 		this.noCuartos = noCuartos;
 		this.noLab = noLab;
 		this.servicios = servicios;
-		this.id_director = id_director;
-		this.id_subdirector = id_subdirector;
-		this.id_administrador = id_administrador;
-		this.id_covid = id_covid;
+		this.director = director;
+		this.subdirector = subdirector;
+		this.administrador = administrador;
+		this.covid =covid;
 	}
 
-	@Override
-	public String toString() {
-		return "Hospital [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", municipio=" + municipio
-				+ ", telefono=" + telefono + ", noMedicos=" + noMedicos + ", noEnfermeros=" + noEnfermeros
-				+ ", noAmbulacias=" + noAmbulacias + ", noCamillas=" + noCamillas + ", noCuartos=" + noCuartos
-				+ ", noLab=" + noLab + ", servicios=" + servicios + ", id_director=" + id_director + ", id_subdirector="
-				+ id_subdirector + ", id_administrador=" + id_administrador + ", id_covid=" + id_covid + "]";
-	}
+	
 
 	public Integer getId() {
 		return id;
@@ -153,36 +146,48 @@ public class Hospital	{
 		this.servicios = servicios;
 	}
 	
-	public Integer getId_director() {
-		return id_director;
+	public Persona get_director() {
+		return director;
 	}
 	
-	public void setId_director(Integer id_director) {
-		this.id_director = id_director;
+	public void set_director(Persona director) {
+		this.director = director;
 	}
 	
-	public Integer getId_subdirector() {
-		return id_subdirector;
+	public Persona get_subdirector() {
+		return subdirector;
 	}
 	
-	public void setId_subdirector(Integer id_subdirector) {
-		this.id_subdirector = id_subdirector;
+	public void set_subdirector(Persona subdirector) {
+		this.subdirector = subdirector;
 	}
 	
-	public Integer getId_administrador() {
-		return id_administrador;
+	public Persona get_administrador() {
+		return administrador;
 	}
 	
-	public void setId_administrador(Integer id_administrador) {
-		this.id_administrador = id_administrador;
+	public void set_administrador(Persona administrador) {
+		this.administrador = administrador;
 	}
 	
-	public Integer getId_covid() {
-		return id_covid;
+	public Covid get_covid() {
+		return this.covid;
 	}
 	
-	public void setId_covid(Integer id_covid) {
-		this.id_covid = id_covid;
+	public void set_covid(Covid covid) {
+		this.covid = covid;
+	}
+	
+	public String getServiciosSeparadosSaltosLinea() {
+		
+		String[] serviciosSeparados=this.servicios.split("-");
+		String serviciosSeparadosConSaltosDeLinea = serviciosSeparados[0];
+		
+		for (int i = 1 ; i < serviciosSeparados.length ; i++) {
+			serviciosSeparadosConSaltosDeLinea+= ", "+serviciosSeparados[i];
+		}
+		
+		return serviciosSeparadosConSaltosDeLinea;
 	}
 	
 	

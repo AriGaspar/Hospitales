@@ -2,81 +2,92 @@ package com.springboot.form.app.models;
 
 public class Persona {
 
-	private Integer _codigo;
-	private String _nombre;
-	private String _titulo;
-	private String _profesion;
-	private String _email;
-	private String _telefono;
+	private Integer codigo;
+	private String cargo;
+	private String nombre;
+	private String titulo;
+	private String profesion;
+	private String email;
+	private String telefono;
+	private String dehospital;
 	
 	public Persona() {
 	
 	}
 
-	
-	
-	
-	
 	public Persona(Integer _codigo, String _nombre, String _titulo, String _profesion, String _email,
 			String _telefono) {
-		this._codigo = _codigo;
-		this._nombre = _nombre;
-		this._titulo = _titulo;
-		this._profesion = _profesion;
-		this._email = _email;
-		this._telefono = _telefono;
+		this.codigo = _codigo;
+		this.nombre = _nombre;
+		this.titulo = _titulo;
+		this.profesion = _profesion;
+		this.email = _email;
+		this.telefono = _telefono;
 	}
 
-
-
-
-
-	public Integer get_codigo() {
-		return _codigo;
+	
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void set_codigo(Integer _codigo) {
-		this._codigo = _codigo;
+	public void setCodigo(Integer _codigo) {
+		this.codigo = _codigo;
 	}
 
-	public String get_nombre() {
-		return _nombre;
+	public String getCargo() {
+		return this.cargo;
 	}
 
-	public void set_nombre(String _nombre) {
-		this._nombre = _nombre;
+	public void setCargo(String _cargo) {
+		this.cargo = _cargo;
+	}
+	
+	public String getNombre() {
+		return nombre;
 	}
 
-	public String get_titulo() {
-		return _titulo;
+	public void setNombre(String _nombre) {
+		this.nombre = _nombre;
 	}
 
-	public void set_titulo(String _titulo) {
-		this._titulo = _titulo;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public String get_profesion() {
-		return _profesion;
+	public void setTitulo(String _titulo) {
+		this.titulo = _titulo;
 	}
 
-	public void set_profesion(String _profesion) {
-		this._profesion = _profesion;
+	public String getProfesion() {
+		return profesion;
 	}
 
-	public String get_email() {
-		return _email;
+	public void setProfesion(String _profesion) {
+		this.profesion = _profesion;
 	}
 
-	public void set_email(String _email) {
-		this._email = _email;
+	public String getEmail() {
+		return email;
 	}
 
-	public String get_telefono() {
-		return _telefono;
+	public void setEmail(String _email) {
+		this.email = _email;
 	}
 
-	public void set_telefono(String _telefono) {
-		this._telefono = _telefono;
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String _telefono) {
+		this.telefono = _telefono;
+	}
+	
+	public String getDeHospital() {
+		return this.dehospital;
+	}
+
+	public void setDeHospital(String _dehospital) {
+		this.dehospital = _dehospital;
 	}
 	
 	
