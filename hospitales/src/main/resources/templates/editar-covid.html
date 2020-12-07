@@ -6,34 +6,40 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/editar-style.css}">
 <title>Editar registros Covid</title>
 </head>
-<body>
+<body class="edit">
 	<div>
 		<form th:object="${covid}" th:action="@{/covid}" method="post">
 			<div class="float-container" style="display: grid; place-items:center; margin-top:5em; ">
 					<h2 th:text="${covid.deHospital}"></h2>
 					<br>
 				<div class="float-child" style="margin-top: 2em;">
-					<input th:field="*{id}" type="hidden" id="id" name="id" th:placeholder="*{getId()}" th:value="*{getId()}">
-					<input th:field="*{deHospital}" type="hidden" id="deHospital" name="deHospital" th:placeholder="*{getDeHospital()}" th:value="*{getDeHospital()}">
-					
-					<label>Casos Negativos:</label> 
-					<input min="0" th:max="${}" th:field="*{negativos}" type="number" id="negativos" name="negativos" th:placeholder="*{getNegativos()}" th:value="*{getNegativos()}"><br>
-					
-					<label>Casos En Estudio:</label> 
-					<input min="0" max="1000000" th:field="*{estudios}" type="number" id="estudios" name="estudios" th:placeholder="*{getEstudios()}" th:value="*{getEstudios()}"><br>
-					
-					<label>Casos Positivos:</label> 
-					<input min="0" max="1000000" th:field="*{positivos}" type="number" id="positivos" name="positivos" th:placeholder="*{getPositivos()}" th:value="*{getPositivos()}"><br>
-					
-					<label>Defunciones:</label> 
-					<input min="0" max="1000000" th:field="*{defunciones}" type="number" id="defunciones" name="defunciones" th:placeholder="*{getDefunciones()}" th:value="*{getDefunciones()}">  <br>
-					
-					<label>Recuperados:</label> 
-					<input min="0" max="1000000" th:field="*{recuperados}" type="number" id="recuperados" name="recuperados" th:placeholder="*{getRecuperados()}" th:value="*{getRecuperados()}"> <br>
-					<input type="submit" class="btn btn-success" value="Guardar datos">
-					<a th:href="@{/lista-covid}" class="btn btn-danger">Cancelar</a>
 				</div>
-
+				<div class="card">
+				  
+				  <div class="card-body">
+				    <input th:field="*{id}" type="hidden" id="id" name="id" th:placeholder="*{getId()}" th:value="*{getId()}">
+					<input th:field="*{deHospital}" type="hidden" id="deHospital" name="deHospital" th:placeholder="*{getDeHospital()}" th:value="*{getDeHospital()}">
+					<div class="mt-5" style="width: 20em;">
+						<label>Casos Negativos:</label> 
+						<input style="width:56px !important;" min="0" max="1000000" th:field="*{negativos}" type="number" id="negativos" name="negativos" th:placeholder="*{getNegativos()}" th:value="*{getNegativos()}"><br>
+						
+						<label>Casos En Estudio:</label> 
+						<input style="width:56px !important;" min="0" max="1000000" th:field="*{estudios}" type="number" id="estudios" name="estudios" th:placeholder="*{getEstudios()}" th:value="*{getEstudios()}"><br>
+						
+						<label>Casos Positivos:</label> 
+						<input style="width:56px !important;" min="0" max="1000000" th:field="*{positivos}" type="number" id="positivos" name="positivos" th:placeholder="*{getPositivos()}" th:value="*{getPositivos()}"><br>
+						
+						<label>Defunciones:</label> 
+						<input style="width:56px !important;" min="0" max="1000000" th:field="*{defunciones}" type="number" id="defunciones" name="defunciones" th:placeholder="*{getDefunciones()}" th:value="*{getDefunciones()}">  <br>
+						
+						<label>Recuperados:</label> 
+						<input style="width:56px !important;" min="0" max="1000000" th:field="*{recuperados}" type="number" id="recuperados" name="recuperados" th:placeholder="*{getRecuperados()}" th:value="*{getRecuperados()}"> <br>
+						<input type="submit" class="btn btn-success" value="Guardar datos">
+						<a th:href="@{/lista-covid}" class="btn btn-danger">Cancelar</a>
+					</div>
+				  </div>
+				 
+				</div>
 			</div>
 		</form>
 	</div>
