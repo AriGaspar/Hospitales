@@ -22,7 +22,7 @@ public class hospitalListController {
 	public hospitalListController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
 		this.servicio = servicio;
 	}
-
+	
 	@GetMapping("/lista-hospitales")
 	public String mostrarDatosHospitales(Model model) {
 

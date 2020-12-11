@@ -1,8 +1,7 @@
 package com.springboot.form.app.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "hospital")
@@ -10,25 +9,52 @@ public class HospitalPrueba {
 
 	// Atributos
 	@Id
-	
+	@Column(name="id")
 	private Integer id;
+	
+	@Column(name="Nombre")
 	private String nombre;
+	
+	@Column(name="Direccion")
 	private String direccion;
+	
+	@Column(name="Municipio")
 	private String municipio;
+	
+	@Column(name="Telefono")
 	private String telefono;
+	
+	@Column(name="No_Medicos")
 	private Integer noMedicos;
+	
+	@Column(name="No_Enfermeros")
 	private Integer noEnfermeros;
-
+	
+	@Column(name="No_Ambulancias")
 	private Integer noAmbulacias;
+	
+	@Column(name="No_Camillas")
 	private Integer noCamillas;
+	
+	@Column(name="No_Cuartos")
 	private Integer noCuartos;
+	
+	@Column(name="No_Laboratorios")
 	private Integer noLab;
 
+	@Column(name="Sevicios")
 	private String servicios;
 
+	@Column(name="id_Director")
 	private Integer id_director;
+	
+	@Column(name="id_Subdirector")
 	private Integer id_subdirector;
+	
+	@Column(name="id_Administrador")
 	private Integer id_administrador;
+	
+	@Column(name="id_Covid")
 	private Integer id_covid;
 
 	public HospitalPrueba() {
