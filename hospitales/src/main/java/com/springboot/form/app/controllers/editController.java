@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//import com.bolsadeideas.springboot.form.app.models.domain.Usuario;
 import com.springboot.form.app.models.Covid;
 import com.springboot.form.app.models.Hospital;
 import com.springboot.form.app.models.Persona;
