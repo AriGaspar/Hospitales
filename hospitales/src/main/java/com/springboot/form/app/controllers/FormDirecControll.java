@@ -51,7 +51,7 @@ public class FormDirecControll {
 		directivo.setTituloSubdirector(tituloSubdirector);
 		directivo.setProfecionSubdirector(profecionSubdirector);
 		directivo.setEmailSubdirector(emailSubdirector);
-		directivo.setTituloSubdirector(tituloSubdirector);
+		directivo.setTituloSubdirector(telefAdministrador);
 		
 		directivo.setNombreAdministrador(nombreAdministrador);
 		directivo.setTituloAdministrador(tituloAdministrador);
