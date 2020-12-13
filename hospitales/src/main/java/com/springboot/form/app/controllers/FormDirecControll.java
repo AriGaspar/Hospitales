@@ -6,19 +6,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springboot.form.app.models.CasosCovid;
 import com.springboot.form.app.models.Directivo;
 
 
 @Controller
 public class FormDirecControll {
 	
-	@GetMapping("/form")
+	@GetMapping("/formDirec")
 	public String form(Model model) {
-		model.addAttribute("titulo", "Formulario");
+		model.addAttribute("titulo", "Formulario Directivos");
 		return "form_directiva";
 	}
 	
-	@PostMapping("/form")
+	@PostMapping("/formDirec")
 	public String procesar(Model model,
 
 			@RequestParam String nombreDirector,
@@ -63,6 +64,32 @@ public class FormDirecControll {
 		model.addAttribute("directivo", directivo);
 		
 		return "result";
+	}
+	
+	@GetMapping("/formCovid")
+	public String formcov(Model model,
+			@RequestParam String casosNeg,
+			@RequestParam String casosEstudio,
+			@RequestParam String casosPositi,
+			@RequestParam String Recuperados,
+			@RequestParam String Defunciones){
+		
+		CasosCovid casos=new CasosCovid();
+		
+		casos.setCasosNeg(casosNeg);
+		casos.setCasosEstudio(casosEstudio);
+		casos.setCasosPositi(casosPositi);
+		casos.setRecuperados(Recuperados);
+		casos.setDefunciones(Defunciones);
+		
+		model.addAttribute("titulocov", "Formulario Covid-19");
+		model.addAttribute("casos", casos);
+		return ("formCovid");
+	}
+	
+	@PostMapping("/formCovid")
+	public String visu(Model model) {
+		return"visuaCovid";
 	}
 
 }
