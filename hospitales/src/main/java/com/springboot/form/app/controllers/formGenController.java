@@ -16,21 +16,14 @@ public class formGenController {
 		model.addAttribute("titulo", "Formulario de Datos Generales");
 		return "formGeneral";
 	}
-	
+
 	@PostMapping("/formgen")
-	public String cargar(Model model,
-			@RequestParam String nombreHos,
-			@RequestParam String direccionHos,
-			@RequestParam String municipioHos,
-			@RequestParam int nMedicos,
-			@RequestParam int nAmbulancias,
-			@RequestParam int nCuartos,
-			@RequestParam int nEnfermos,
-			@RequestParam int nCamillas,
-			@RequestParam int nLaboratorios,
-			@RequestParam String servicioHos) {
+	public String cargar(Model model, @RequestParam String nombreHos, @RequestParam String direccionHos,
+			@RequestParam String municipioHos, @RequestParam int nMedicos, @RequestParam int nAmbulancias,
+			@RequestParam int nCuartos, @RequestParam int nEnfermos, @RequestParam int nCamillas,
+			@RequestParam int nLaboratorios, @RequestParam String servicioHos) {
 		General general = new General();
-		
+
 		general.setNombreHos(nombreHos);
 		general.setDireccionHos(direccionHos);
 		general.setMunicipioHos(municipioHos);
@@ -41,10 +34,10 @@ public class formGenController {
 		general.setnCamillas(nCamillas);
 		general.setnLaboratorios(nLaboratorios);
 		general.setServicioHos(servicioHos);
-		
-		model.addAttribute("titulo", "Resultado General Hos");
+
+		model.addAttribute("titulo", "Resultado General Hospital");
 		model.addAttribute("general", general);
-		
+
 		return "resHos";
 	}
 }
