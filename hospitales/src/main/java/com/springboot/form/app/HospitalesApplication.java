@@ -14,7 +14,7 @@ public class HospitalesApplication {
 		
 		String jdbcUrl="jdbc:mysql://localhost:3306/hospital_qr?useSSL=false";
 		String usuario="root";
-		String contra="root";
+		String contra="";
 		
 		try {
 			System.out.println("Intentando conectar con la BBDD: " + jdbcUrl);
