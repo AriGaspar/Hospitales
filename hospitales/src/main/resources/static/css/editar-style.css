@@ -1,9 +1,14 @@
 @charset "UTF-8";
 
-body {
+body{
 	font-family: Gill Sans MT !important;
 	color: #E8F9FD !important;
 	background-color: #E8F9FD;
+}
+.edit{
+	font-family: Gill Sans MT !important;
+	color: #E8F9FD !important;
+	background-color: #3CABC7;
 }
 
 .invertir-color {
@@ -30,4 +35,14 @@ body {
 }
 .drop-table { 
 	filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2)); 
+}
+
+.card-body{
+	background-color: #69C3DA !important;
+	border-radius: 25px !important;
+}
+.card{
+	background-color: #69C3DA !important;
+	border-radius: 25px !important;
+	display: inline-block;
 }

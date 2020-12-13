@@ -44,7 +44,6 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 				); 
 		
 		for (int i = 0; i < hospitales.size(); i++) {
-			
 			hospitales.get(i).get_covid().setDeHospital(hospitales.get(i).getNombre());
 			
 			hospitales.get(i).get_director().setDeHospital(hospitales.get(i).getNombre());
@@ -63,6 +62,7 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	//Metodo que MODIFICA los datos en la base de datos
 	public void setHospital(List<Hospital> hospital) {
 		this._hospitales.set(this.getIndexHospitalDeHospitales(hospital),hospital.get(0)); //se establece el hospital modificado dentro de los demas 
+		
 	}
 
 	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {

@@ -24,8 +24,7 @@ public class hospitalListController {
 	public hospitalListController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
 		this.servicio=servicio;
 	}
-	
-	
+	//Pedos
 	@GetMapping("/lista-hospitales")
 	public String mostrarDatosHospitales(Model model) {
 		

@@ -110,7 +110,4 @@ public class Directivo {
 	public void setTelefAdministrador(String telefAdministrador) {
 		this.telefAdministrador = telefAdministrador;
 	} 
-	
-	
-
 }
