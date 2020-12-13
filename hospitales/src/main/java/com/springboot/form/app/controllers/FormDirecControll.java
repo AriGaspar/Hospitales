@@ -67,7 +67,14 @@ public class FormDirecControll {
 	}
 	
 	@GetMapping("/formCovid")
-	public String formcov(Model model,
+	public String formcov(Model model) {
+		
+		model.addAttribute("titulocov", "Formulario Covid-19");
+		return ("formCovid");
+	}
+	
+	@PostMapping("/formCovid")
+	public String visu(Model model,
 			@RequestParam String casosNeg,
 			@RequestParam String casosEstudio,
 			@RequestParam String casosPositi,
@@ -83,13 +90,8 @@ public class FormDirecControll {
 		casos.setDefunciones(Defunciones);
 		
 		model.addAttribute("titulocov", "Formulario Covid-19");
-		model.addAttribute("casos", casos);
-		return ("formCovid");
-	}
-	
-	@PostMapping("/formCovid")
-	public String visu(Model model) {
+		model.addAttribute("casos", casos); {
 		return"visuaCovid";
 	}
-
+	}
 }
