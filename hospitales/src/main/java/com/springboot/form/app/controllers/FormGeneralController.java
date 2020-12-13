@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.springboot.form.app.models.General;
 
 @Controller
-public class formGenController {
-
-	@GetMapping("/formgen")
-	public String formgen(Model model) {
-		model.addAttribute("titulo", "Formulario de Datos Generales");
+public class FormGeneralController {
+	@GetMapping("/formgen2")
+	public String formgen2(Model model) {
+		model.addAttribute("title", "Formulario de Datos Generales");
 		return "formGeneral";
 	}
 
-	@PostMapping("/formgen")
-	public String cargar(Model model, @RequestParam String nombreHos, @RequestParam String direccionHos,
+	@PostMapping("/formgen2")
+	public String cargar2(Model model, @RequestParam String nombreHos, @RequestParam String direccionHos,
 			@RequestParam String municipioHos, @RequestParam int nMedicos, @RequestParam int nAmbulancias,
 			@RequestParam int nCuartos, @RequestParam int nEnfermos, @RequestParam int nCamillas,
 			@RequestParam int nLaboratorios, @RequestParam String servicioHos) {
@@ -35,9 +34,10 @@ public class formGenController {
 		general.setnLaboratorios(nLaboratorios);
 		general.setServicioHos(servicioHos);
 
-		model.addAttribute("titulo", "Resultado General Hospital");
+		model.addAttribute("title", "Resultado General de Hospitales");
 		model.addAttribute("general", general);
-
+		
 		return "resHos";
 	}
+
 }
