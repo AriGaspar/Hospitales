@@ -14,152 +14,151 @@
 
 <link rel="stylesheet" href="hospital-style.css">
 </head>
-<body >
+<body>
 	<h1 th:text="${titulo}"></h1>
+
 	
 	<form style="color: black;" th:action="@{/formDirec}" method="post">
 
-<table>
 
-<tr>
-<th style=" width: 25%;">
-		<div  class="card">
-			<div class="card-header">
-				<h3 class="card-title">Datos Director</h3>
-			</div>
-			<div class="card-body">
+		<table>
 
-				<div class="mb-3">
+			<tr>
+				<th style="width: 25%;">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Datos Director</h3>
+						</div>
+						<div class="card-body">
 
-					<br> <label for="nombreDirector" class="form-label">Nombre:</label>
-					<input type="text" class="form-control" name="nombreDirector"
-						id="nombreDirector">
-				</div>
+							<div class="mb-3">
 
-				<div class="mb-3">
-					<label for="tituloDirector" class="form-label">Titulo:</label> <input
-						type="text" class="form-control" name="tituloDirector"
-						id="tituloDirector">
-				</div>
+								<br> <label for="nombreDirector" class="form-label">Nombre:</label>
+								<input type="text" class="form-control" name="nombreDirector"
+									id="nombreDirector">
+							</div>
 
-				<div class="mb-3">
-					<label for="profecionDirector" class="form-label">Profeción:</label>
-					<input type="text" class="form-control" name="profecionDirector"
-						id="profecionDirector">
-				</div>
+							<div class="mb-3">
+								<label for="tituloDirector" class="form-label">Titulo:</label> <input
+									type="text" class="form-control" name="tituloDirector"
+									id="tituloDirector">
+							</div>
 
-				<div class="mb-3">
-					<label for="emailDirector" class="form-label">Email:</label> <input
-						type="text" class="form-control" name="emailDirector"
-						id="emailDirector">
-				</div>
+							<div class="mb-3">
+								<label for="profecionDirector" class="form-label">Profeción:</label>
+								<input type="text" class="form-control" name="profecionDirector"
+									id="profecionDirector">
+							</div>
 
-				<div class="mb-3">
-					<label for="telefDirector" class="form-label">Teléfono</label> <input
+							<div class="mb-3">
+								<label for="emailDirector" class="form-label">Email:</label> <input
+									type="text" class="form-control" name="emailDirector"
+									id="emailDirector">
+							</div>
+
+							<div class="mb-3">
+								<label for="telefDirector" class="form-label">Teléfono</label> <input
 									type="text" class="form-control" name="telefDirector"
 									id="telefDirector">
 							</div>
 
-				
-			</div>
-		</div>
-		</th>
-		<th  style=" width: 100px;">
-		
-		</th>
-		<!--///////////////////////////////////////////////////////////////////////////////////////////////////// -->
-		<th >
-		<div style=" width: 650px;" class="card">
-			<div class="card-header">
-				<h3 class="card-title">Datos Subdirector</h3>
-			</div>
-			<div class="card-body">
 
-				<div class="mb-3">
+						</div>
+					</div>
+				</th>
+				<th style="width: 100px;"></th>
+				<!--///////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<th>
+					<div style="width: 650px;" class="card">
+						<div class="card-header">
+							<h3 class="card-title">Datos Subdirector</h3>
+						</div>
+						<div class="card-body">
 
-					<br> <label for="nombreSubdirector" class="form-label">Nombre:</label>
-					<input type="text" class="form-control" name="nombreSubdirector"
-						id="nombreSubdirector">
-				</div>
+							<div class="mb-3">
 
-				<div class="mb-3">
-					<label for="tituloSubdirector" class="form-label">Titulo:</label> <input
-						type="text" class="form-control" name="tituloSubdirector"
-						id=tituloSubdirector>
-				</div>
+								<br> <label for="nombreSubdirector" class="form-label">Nombre:</label>
+								<input type="text" class="form-control" name="nombreSubdirector"
+									id="nombreSubdirector">
+							</div>
 
-				<div class="mb-3">
-					<label for="profecionSubdirector" class="form-label">Profeción:</label>
-					<input type="text" class="form-control" name="profecionSubdirector"
-						id="profecionSubdirector">
-				</div>
+							<div class="mb-3">
+								<label for="tituloSubdirector" class="form-label">Titulo:</label>
+								<input type="text" class="form-control" name="tituloSubdirector"
+									id=tituloSubdirector>
+							</div>
 
-				<div class="mb-3">
-					<label for="emailSubdirector" class="form-label">Email:</label> <input
-						type="text" class="form-control" name="emailSubdirector"
-						id="emailSubdirector">
-				</div>
+							<div class="mb-3">
+								<label for="profecionSubdirector" class="form-label">Profeción:</label>
+								<input type="text" class="form-control"
+									name="profecionSubdirector" id="profecionSubdirector">
+							</div>
 
-				<div class="mb-3">
-					<label for="telefSubdirector" class="form-label">Teléfono</label> <input
-						type="text" class="form-control" name="telefSubdirector"
-						id="telefSubdirector">
-				</div>
+							<div class="mb-3">
+								<label for="emailSubdirector" class="form-label">Email:</label>
+								<input type="text" class="form-control" name="emailSubdirector"
+									id="emailSubdirector">
+							</div>
 
-				
-			</div>
-		</div>
-</th>
-		<!--///////////////////////////////////////////////////////////////////////////////////////////////////// -->
-		<th  style=" width: 5%;">
-		
-		</th>
-	<th style=" width: 30%;">
-		<div  class="card">
-			<div class="card-header">
-				<h3 class="card-title">Datos de Administrador</h3>
-			</div>
-			<div class="card-body">
+							<div class="mb-3">
+								<label for="telefSubdirector" class="form-label">Teléfono</label>
+								<input type="text" class="form-control" name="telefSubdirector"
+									id="telefSubdirector">
+							</div>
 
-				<div class="mb-3">
 
-					<br> <label for="nombreAdministrador" class="form-label">Nombre:</label>
-					<input type="text" class="form-control" name="nombreAdministrador"
-						id="nombreAdministrador">
-				</div>
+						</div>
+					</div>
+				</th>
+				<!--///////////////////////////////////////////////////////////////////////////////////////////////////// -->
+				<th style="width: 5%;"></th>
+				<th style="width: 30%;">
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Datos de Administrador</h3>
+						</div>
+						<div class="card-body">
 
-				<div class="mb-3">
-					<label for="tituloAdministrador" class="form-label">Titulo:</label> <input
-						type="text" class="form-control" name="tituloAdministrador"
-						id="tituloAdministrador">
-				</div>
+							<div class="mb-3">
 
-				<div class="mb-3">
-					<label for="profecionAdministrador" class="form-label">Profeción:</label>
-					<input type="text" class="form-control" name="profecionAdministrador"
-						id="profecionAdministrador">
-				</div>
+								<br> <label for="nombreAdministrador" class="form-label">Nombre:</label>
+								<input type="text" class="form-control"
+									name="nombreAdministrador" id="nombreAdministrador">
+							</div>
 
-				<div class="mb-3">
-					<label for="emailAdministrador" class="form-label">Email:</label> <input
-						type="text" class="form-control" name="emailAdministrador"
-						id="emailAdministrador">
-				</div>
+							<div class="mb-3">
+								<label for="tituloAdministrador" class="form-label">Titulo:</label>
+								<input type="text" class="form-control"
+									name="tituloAdministrador" id="tituloAdministrador">
+							</div>
 
-				<div class="mb-3">
-					<label for="telefAdministrador" class="form-label">Teléfono</label> <input
-						type="text" class="form-control" name="telefAdministrador"
-						id="telefAdministrador">
-				</div>
+							<div class="mb-3">
+								<label for="profecionAdministrador" class="form-label">Profeción:</label>
+								<input type="text" class="form-control"
+									name="profecionAdministrador" id="profecionAdministrador">
+							</div>
 
-				
-			</div>
-		</div>
-		</th>
-		</tr>
-</table>
- <button style="background-color: 	#996633; color: #FFFFFF">atras</button> <button style="background-color: #33CC33; color: #FFFFFF">siguiente</button>
-	<input type="submit" value="Enviar">
+							<div class="mb-3">
+								<label for="emailAdministrador" class="form-label">Email:</label>
+								<input type="text" class="form-control"
+									name="emailAdministrador" id="emailAdministrador">
+							</div>
+
+							<div class="mb-3">
+								<label for="telefAdministrador" class="form-label">Teléfono</label>
+								<input type="text" class="form-control"
+									name="telefAdministrador" id="telefAdministrador">
+							</div>
+
+
+						</div>
+					</div>
+				</th>
+			</tr>
+		</table>
+		<button style="background-color: #996633; color: #FFFFFF">atras</button>
+		<button style="background-color: #33CC33; color: #FFFFFF">siguiente</button>
+		<input type="submit" value="Enviar">
 	</form>
 
 </body>
