@@ -34,30 +34,35 @@
 								<br> <label for="nombreDirector" class="form-label">Nombre:</label>
 								<input type="text" class="form-control" name="nombreDirector"
 									id="nombreDirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('nombreDirector')}" th:errors="{nombreDirector}"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="tituloDirector" class="form-label">Titulo:</label> <input
 									type="text" class="form-control" name="tituloDirector"
 									id="tituloDirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('tituloDirector')}" th:errors="tituloDirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="profecionDirector" class="form-label">Profeción:</label>
 								<input type="text" class="form-control" name="profecionDirector"
 									id="profecionDirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('profecionDirector')}" th:errors="profecionDirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="emailDirector" class="form-label">Email:</label> <input
 									type="text" class="form-control" name="emailDirector"
 									id="emailDirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('emailDirector')}" th:errors="emailDirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="telefDirector" class="form-label">Teléfono</label> <input
 									type="number" class="form-control" name="telefDirector"
 									id="telefDirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('telefDirector')}" th:errors="telefDirector"></small>
 							</div>
 
 
@@ -79,30 +84,35 @@
 								<br> <label for="nombreSubdirector" class="form-label">Nombre:</label>
 								<input type="text" class="form-control" name="nombreSubdirector"
 									id="nombreSubdirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('nombreSubdirector')}" th:errors="nombreSubdirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="tituloSubdirector" class="form-label">Titulo:</label>
 								<input type="text" class="form-control" name="tituloSubdirector"
 									id=tituloSubdirector>
+									<small class="form-text text-danger" th:if="${#fields.hasError('tituloSubdirector')}" th:errors="tituloSubdirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="profecionSubdirector" class="form-label">Profeción:</label>
 								<input type="text" class="form-control"
 									name="profecionSubdirector" id="profecionSubdirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('profecionSubdirector')}" th:errors="profecionSubdirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="emailSubdirector" class="form-label">Email:</label>
 								<input type="text" class="form-control" name="emailSubdirector"
 									id="emailSubdirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('emailSubdirector')}" th:errors="emailSubdirector"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="telefSubdirector" class="form-label">Teléfono</label>
 								<input type="number" class="form-control" name="telefSubdirector"
 									id="telefSubdirector">
+									<small class="form-text text-danger" th:if="${#fields.hasError('telefSubdirector')}" th:errors="telefSubdirector"></small>
 							</div>
 
 
@@ -124,30 +134,35 @@
 								<br> <label for="nombreAdministrador" class="form-label">Nombre:</label>
 								<input type="text" class="form-control"
 									name="nombreAdministrador" id="nombreAdministrador">
+									<small class="form-text text-danger" th:if="${#fields.hasError('nombreAdministrador')}" th:errors="nombreAdministrador"></small>
 							</div>
 
 							<div class="mb-3">
 								<label for="tituloAdministrador" class="form-label">Titulo:</label>
 								<input type="text" class="form-control"
 									name="tituloAdministrador" id="tituloAdministrador">
+									
 							</div>
 
 							<div class="mb-3">
 								<label for="profecionAdministrador" class="form-label">Profeción:</label>
 								<input type="text" class="form-control"
 									name="profecionAdministrador" id="profecionAdministrador">
+									
 							</div>
 
 							<div class="mb-3">
 								<label for="emailAdministrador" class="form-label">Email:</label>
 								<input type="text" class="form-control"
 									name="emailAdministrador" id="emailAdministrador">
+									
 							</div>
 
 							<div class="mb-3">
 								<label for="telefAdministrador" class="form-label">Teléfono</label>
 								<input type="number" class="form-control"
 									name="telefAdministrador" id="telefAdministrador">
+									
 							</div>
 
 
@@ -170,24 +185,28 @@
 								<br> <label for="casosNeg" class="form-label">Casos
 									Negativos:</label> <input type="number" class="form-control"
 									name="casosNeg" id="casosNeg">
+									
 							</div>
 
 							<div class="mb-3">
 								<label for="casosEstudio" class="form-label">Casos en
 									Estudio:</label> <input type="number" class="form-control"
 									name="casosEstudio" id="casosEstudio">
+									
 							</div>
 
 							<div class="mb-3">
 								<label for="casosPositi" class="form-label">Casos
 									Positivos:</label> <input type="number" class="form-control"
 									name="casosPositi" id="casosPositi">
+									
 							</div>
 
 							<div class="mb-3">
 								<label for="Recuperados" class="form-label">Recuperados:</label>
 								<input type="number" class="form-control" name="Recuperados"
 									id="Recuperados">
+									
 							</div>
 
 							<div class="mb-3">
@@ -219,6 +238,7 @@
 									name="nombreHos" id="nombreHos">
 								</span>
 							</div>
+							
 							<!-- -->
 							<div class="mb-3">
 								<label for="direccionHos" class="form-label">Dirección</label> <input

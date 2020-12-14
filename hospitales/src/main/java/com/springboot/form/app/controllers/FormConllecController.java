@@ -3,9 +3,12 @@ package com.springboot.form.app.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,13 +23,16 @@ import com.springboot.form.app.models.Persona;
 public class FormConllecController {
 
 	@GetMapping("/formCollec")
-	public String collec(Model model) {
-		model.addAttribute("titulo", "Formulario ");
+	public String collec(Hospital hospital) {
+
+
 		return "formCollec";
 	}
 	
 	@PostMapping("/formCollec")
-	public String visualis(Model model,
+	public String visualis(@Valid Model hospital,
+			BindingResult result,
+			
 			@RequestParam String nombreDirector,
 			@RequestParam String tituloDirector,
 			@RequestParam String profecionDirector,
@@ -63,8 +69,10 @@ public class FormConllecController {
 			@RequestParam String servicioHos) {
 		
 		
+		if(result.hasErrors()) {
+			return "formCollec";
+		}
 		
-		model.addAttribute("titulo", "Formulario");
 		
 		System.out.print(nombreSubdirector);
 		return "redirect:/formCollec";
