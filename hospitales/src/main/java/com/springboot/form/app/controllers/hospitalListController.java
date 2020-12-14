@@ -15,19 +15,20 @@ import com.springboot.form.app.models.Persona;
 
 @Controller
 public class hospitalListController {
-
+	
 	private obtenerInfoDesdeBD servicio;
 
 	@Autowired
 	public hospitalListController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
 		this.servicio = servicio;
+	
 	}
 	
 	@GetMapping("/lista-hospitales")
 	public String mostrarDatosHospitales(Model model) {
 
 		model.addAttribute("hospitales", servicio.getHospitalesActuales());
-
+		
 		return "lista_hospital";
 	}
 

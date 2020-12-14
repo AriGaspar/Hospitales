@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.springboot.form.app.dao.IHospital2Repo;
 import com.springboot.form.app.models.Covid;
 import com.springboot.form.app.models.Hospital;
 import com.springboot.form.app.models.Persona;
@@ -13,13 +15,15 @@ import com.springboot.form.app.models.Persona;
 @Component
 public class informacionDesdeBD implements obtenerInfoDesdeBD{
 
+	
+	
 	private List<Hospital> _hospitales=getHospitalesDesdeBD();
 	public List<Hospital> _hospital=new ArrayList<Hospital>();
 
-	
 	//Metodo que OBTIENE los datos de la base de datos
 	@Override
 	public List<Hospital> getHospitalesDesdeBD() {
+//		System.out.println("Nombre: "+this.h.findAll().get(0).getNombre());
 		List<Hospital> hospitales = Arrays.asList(
 				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
 						new Persona(1,"Pedro May","Administración de Empresas","Medico","pedro@gmail.com","9831235432"),
@@ -89,5 +93,9 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 	public void vaciarHospitalActual() {
 		this._hospital.clear();
 	}
-
+	
+	public void setNewHospital(Hospital h) {
+		_hospitales.add(h);
+	}
+	
 }

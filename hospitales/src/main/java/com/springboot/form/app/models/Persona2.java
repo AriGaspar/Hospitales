@@ -36,7 +36,6 @@ public class Persona2 {
 	}
 
 	public Persona2(Integer codigo, String nombre, String titulo, String profesion, String email, String telefono) {
-		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.titulo = titulo;

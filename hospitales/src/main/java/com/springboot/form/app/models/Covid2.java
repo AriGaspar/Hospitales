@@ -38,7 +38,7 @@ public class Covid2 {
 
 	public Covid2(Integer id, Integer negativos, Integer estudio, Integer positivos, Integer defunciones,
 			Integer recuperados) {
-		super();
+
 		this.id = id;
 		this.negativos = negativos;
 		this.estudio = estudio;

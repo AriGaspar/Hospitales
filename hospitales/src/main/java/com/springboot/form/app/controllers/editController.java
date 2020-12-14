@@ -21,7 +21,8 @@ import com.springboot.form.app.models.Persona;
 
 @Controller
 public class editController {
-
+	
+	
 	private obtenerInfoDesdeBD servicio;
 	@Autowired
 	public editController(@Qualifier("informacionDesdeBD") obtenerInfoDesdeBD servicio) {
@@ -37,7 +38,7 @@ public class editController {
 		hospitalTemp.add(hospital);
 		
 		servicio.setHospital(hospitalTemp);//Establece el hospital modificado dentro de la lista hospitales
-
+		
 		return "redirect:/lista-hospitales";//Actualiza la pagina de todos los hospitales
 	}
 	@PostMapping("/personal")//String _nombre,String _titulo,String _profesion,String _email,String _telefono
@@ -97,6 +98,7 @@ public class editController {
 		hospitales.forEach(h -> hospitalTemp.add(h));
 		servicio.setHospitalActual(hospitalTemp);
 		model.addAttribute("hospital", hospitalTemp);//
+		
 		return "editar-hospital";
 	}
 	

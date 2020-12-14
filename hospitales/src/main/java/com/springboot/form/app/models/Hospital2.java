@@ -8,6 +8,7 @@ public class Hospital2 {
 	
 	//Atributos
 		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name="id")
 		private Integer id;
 		
@@ -26,10 +27,9 @@ public class Hospital2 {
 		@Column(name="No_Medicos")
 		private Integer noMedicos;
 
-		@Column(name="No_enfermeros")
+		@Column(name="No_Enfermeros")
 		private Integer noEnfermeros;
 		
-
 		@Column(name="No_Ambulancias")
 		private Integer noAmbulacias;
 
@@ -44,7 +44,6 @@ public class Hospital2 {
 
 		@Column(name="Servicios")
 		private String servicios;
-		
 
 		@Column(name="id_Director")
 		private Integer director;
@@ -75,7 +74,6 @@ public class Hospital2 {
 				Integer noMedicos, Integer noEnfermeros, Integer noAmbulacias, Integer noCamillas, Integer noCuartos,
 				Integer noLab, String servicios, Integer director, Integer subdirector, Integer administrador,
 				Integer covid) {
-			super();
 			this.id = id;
 			this.nombre = nombre;
 			this.direccion = direccion;
