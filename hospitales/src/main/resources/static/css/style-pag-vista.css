@@ -1,0 +1,86 @@
+* {
+    font-family:"Gill Sans MT"; 
+    font-size: 13px;
+}
+/* Navbar */
+.nav-active {
+    
+    color: white;
+    padding: 25px;
+    font-size: 25px;
+}
+
+.nav-active:hover {
+    
+    color: #c8e1e7;
+    text-decoration: none;
+}
+
+.nav-disabled {
+    
+    color: #A4C5CD;
+    padding: 25px;
+    font-size: 25px;
+    
+}
+
+.nav-disabled:hover {
+  text-decoration: none;
+  color: #A4C5CD;
+  cursor: default;
+}
+
+/* Fin Navbar */
+
+/* Tabla */
+
+#table {
+    border-collapse: separate;
+    border-spacing:  0px 10px;
+    table-layout : fixed;
+    
+}
+
+thead tr {
+    text-align: center;
+    color: #3CABC7;
+    background-color: white;
+}
+
+tbody tr {
+    text-align: center;
+    color: #3CABC7;
+    background-color: white;
+}
+
+/* Fin Tabla */
+
+/* "Boton" agregar */
+
+.div_centrado {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    padding: 0px 0px 25px 0px;
+}
+/* Fin de "Boton" agregar */
+
+/* Pagina covid */
+
+.color1 {
+    color: #5C3CC7;
+}
+
+.color2 {
+    color: #2760B6;
+}
+.color3 {
+    color: #C7403C;
+}
+.color4 {
+    color: #54C73C;
+}
+.color5 {
+    color: #0C333C;
+}
+/* Fin Pagina covid */
