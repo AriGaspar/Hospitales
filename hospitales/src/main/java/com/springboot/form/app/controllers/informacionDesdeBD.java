@@ -3,6 +3,7 @@ package com.springboot.form.app.controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -66,28 +67,40 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 										hs.getNoCuartos(),
 										hs.getNoLab(),
 										hs.getServicios(),
-										11,
-										4538,
-										653,
-										1);
+										getDirectivosOCovidIDs("director", hs.getId()),
+										getDirectivosOCovidIDs("subdirector", hs.getId()),
+										getDirectivosOCovidIDs("administrador", hs.getId()),
+										getDirectivosOCovidIDs("covid", hs.getId()));
 		
 		this.h.save(hospita);
 	}
 
 	public Integer getDirectivosOCovidIDs(String que,Integer hid) {
 		List<Hospital2> h2 = this.h.findAll();
-		List<Persona2> p2 = this.p.findAll();
-		List<Director> d = this.d.findAll();
-		List<Subdirector> s = this.s.findAll();
-		List<Administrador> a = this.a.findAll();
 		
-		for (int i = 0; i <d.size() ; i++) {
-			if(hid==d.get(i).getId()) {
-				
+		Integer idFinal=0;
+		
+		for (int i = 0; i <h2.size() ; i++) {
+			if(hid==h2.get(i).getId()) {
+				switch(que) {
+				case "director":
+						idFinal=h2.get(i).getDirector();
+					break;
+				case "subdirector":
+						idFinal=h2.get(i).getSubdirector();
+					break;
+				case "administrador":
+						idFinal=h2.get(i).getAdministrador();
+					break;
+				case "covid":
+						idFinal=h2.get(i).getCovid();
+					break;
+				}
 			}
+			
 		}
 		
-		return 1;
+		return idFinal;
 	}
 	
 	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {
@@ -115,8 +128,49 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 		this._hospital.clear();
 	}
 	
-	public void setNewHospital(Hospital h) {
-		_hospitales.add(h);
+	public void setNewHospital(Hospital hs) {
+		Integer dirId=generateUniqueId();
+		Integer subId=generateUniqueId();
+		Integer admId=generateUniqueId();
+		
+		Persona2 director = new Persona2(hs.get_director().getCodigo(),hs.get_director().getNombre(),hs.get_director().getTitulo(),hs.get_director().getProfesion(),hs.get_director().getEmail(),hs.get_director().getTelefono());
+		Persona2 subdirector = new Persona2(hs.get_subdirector().getCodigo(),hs.get_subdirector().getNombre(),hs.get_subdirector().getTitulo(),hs.get_subdirector().getProfesion(),hs.get_subdirector().getEmail(),hs.get_subdirector().getTelefono());
+		Persona2 administrador = new Persona2(hs.get_administrador().getCodigo(),hs.get_administrador().getNombre(),hs.get_administrador().getTitulo(),hs.get_administrador().getProfesion(),hs.get_administrador().getEmail(),hs.get_administrador().getTelefono());
+		Covid2 covid = new Covid2(hs.get_covid().getId(),hs.get_covid().getNegativos(),hs.get_covid().getEstudios(),hs.get_covid().getPositivos(),hs.get_covid().getDefunciones(),hs.get_covid().getRecuperados());
+		
+		Hospital2 hospital=new Hospital2(hs.getId(),
+				hs.getNombre(),
+				hs.getDireccion(),
+				hs.getMunicipio(),
+				hs.getTelefono().toString(),
+				hs.getNoMedicos(),
+				hs.getNoEnfermeros(),
+				hs.getNoAmbulacias(),
+				hs.getNoCamillas(),
+				hs.getNoCuartos(),
+				hs.getNoLab(),
+				hs.getServicios(),
+				dirId,
+				subId,
+				admId,
+				hs.get_covid().getId());
+		
+		//Añadiendo Persona Director
+		this.p.save(director);
+		//Añadiendo Persona Subdirector
+		this.p.save(subdirector);
+		//Añadiendo Persona Adminstrador
+		this.p.save(administrador);
+		//Añadiendo Registro covid
+		this.c.save(covid);
+		//Añadiendo Director
+		this.d.save(new Director(dirId,director.getCodigo()));
+		//Añadiendo Subdirector
+		this.s.save(new Subdirector(subId,subdirector.getCodigo()));
+		//Añadiendo Adminstrador
+		this.a.save(new Administrador(admId,administrador.getCodigo()));
+		//Añadiendo hospitales
+		this.h.save(hospital);
 	}
 	
 	public List<Hospital> getG(){
@@ -296,51 +350,14 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 		this.c.save(new Covid2(c.getId(),c.getNegativos(),c.getEstudios(),c.getPositivos(),c.getDefunciones(),c.getRecuperados()));
 	}
 	
-
-	private void metodonofuncional() {
-		System.out.println(p.findAll().get(0).getNombre());
-
-		List<Hospital> hospitales = Arrays.asList(
-				
+	public int generateUniqueId() {      
+        UUID idOne = UUID.randomUUID();
+        String str=""+idOne;        
+        int uid=str.hashCode();
+        String filterStr=""+uid;
+        str=filterStr.replaceAll("-", "");
+        return Integer.parseInt(str.substring(0, 3));
+    }
 	
-				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Odontologuia-Cardiologuia-Pedos2-Pedaturbia", 
-						new Persona(1,"Pedro May","Administración de Empresas","Medico","pedro@gmail.com","9831235432"),
-						new Persona(23,"Tendor Yam","Química de Empresas","Medico","tendor@gmail.com","9831235432"),
-						new Persona(14,"Eduardo May","Administración de Empresas","Medico","eduardo@gmail.com","9831235432"),
-						new Covid(45,42,12,32,54,23)),
-				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(1,"Pedro May","Administración de Empresas","Medico","pedro@gmail.com","9831235432"),
-						new Persona(23,"Tendor Yam","Química de Empresas","Medico","tendor@gmail.com","9831235432"),
-						new Persona(14,"Eduardo May","Administración de Empresas","Medico","eduardo@gmail.com","9831235432"),
-						new Covid(45,42,12,32,54,23)),
-				new Hospital(2, "Hospital Zaragoza", "Calle 31","Merida","9421543219",1,1,4,2,1,4, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(21,"Albert May","Administración de Empresas","Medico","albert@gmail.com","9831235432"),
-						new Persona(12,"Mario May","Química de Empresas","Medico","mario@gmail.com","9831235432"),
-						new Persona(4,"MArcos May","Administración de Empresas","Medico","marcos@gmail.com","9831235432"),
-						new Covid(1,42,12,32,54,23)),
-				new Hospital(3, "Hospital CAKITO", "Calle 45","Chetumal","9876573119",9,4,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(55,"Kiko May","Administración de Empresas","Medico","marcos@gmail.com","9831235432"),
-						new Persona(323,"Manuel Tamay","Química","Medico","marcos@gmail.com","9831235432"),
-						new Persona(31,"Carlos May","Química","Medico","pedro@gmail.com","9831235432"),
-						new Covid(3,42,12,32,54,23)),
-				new Hospital(4, "Hospital Mendez", "Calle 65","Carrillo York","9276543246",4,1,4,2,1,1, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
-						new Persona(432,"Marquitos Mendez","Química","Medico","marcos@gmail.com","9831235432"),
-						new Persona(42,"Juan Marquez","Química","Medico","marcos@gmail.com","9831235432"),
-						new Persona(46,"Jose Tun","Química","Medico","pedro@gmail.com","9831235432"),
-						new Covid(6,42,12,32,54,23))
-				); 
-		
-		for (int i = 0; i < hospitales.size(); i++) {
-			hospitales.get(i).get_covid().setDeHospital(hospitales.get(i).getNombre());
-			
-			hospitales.get(i).get_director().setDeHospital(hospitales.get(i).getNombre());
-			hospitales.get(i).get_director().setCargo("Director");
-			
-			hospitales.get(i).get_subdirector().setDeHospital(hospitales.get(i).getNombre());
-			hospitales.get(i).get_subdirector().setCargo("Subdirector");
-			
-			hospitales.get(i).get_administrador().setDeHospital(hospitales.get(i).getNombre());
-			hospitales.get(i).get_administrador().setCargo("Administrador");
-		}//
-	}
+	
 }

@@ -16,11 +16,10 @@ public interface obtenerInfoDesdeBD {
 	public List<Hospital> getHospitalActual();
 	public List<Hospital> getG();
 	public void vaciarHospitalActual();
-	public void setNewHospital(Hospital h);
+	public void setNewHospital(Hospital hs);
 	public List<Persona> getPersonal();
 	public void setPersonal(Persona p);
 	public List<Covid> getRegistrosCovid();
 	public void setCovid(Covid c);
-
 	
 }

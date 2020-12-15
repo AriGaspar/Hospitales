@@ -19,9 +19,7 @@
 			<form th:action="@{/hospital}" method="POST">
 				<div class="float-container">
 					<div class="float-child">
-					
-						<input maxlength="50" type="hidden" id="id" name="id" ><br>
-						<label>Nombre:</label> 
+						<input th:field="*{id}" type="hidden" id="id" name="id" th:placeholder="${hospital.getId()}" th:value="${hospital.getId()}">
 						<label>Nombre:</label> 
 						<input maxlength="50" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
 						
