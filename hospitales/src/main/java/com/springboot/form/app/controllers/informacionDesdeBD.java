@@ -299,7 +299,15 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 
 	private void metodonofuncional() {
 		System.out.println(p.findAll().get(0).getNombre());
+
 		List<Hospital> hospitales = Arrays.asList(
+				
+	
+				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Odontologuia-Cardiologuia-Pedos2-Pedaturbia", 
+						new Persona(1,"Pedro May","Administración de Empresas","Medico","pedro@gmail.com","9831235432"),
+						new Persona(23,"Tendor Yam","Química de Empresas","Medico","tendor@gmail.com","9831235432"),
+						new Persona(14,"Eduardo May","Administración de Empresas","Medico","eduardo@gmail.com","9831235432"),
+						new Covid(45,42,12,32,54,23)),
 				new Hospital(1, "Hospital Santa Maria", "Calle 3","Solidaridad","9871243219",5,9,4,2,1,2, "Pediatria-Caca-Caca2-Pedos2-Pedaturbia", 
 						new Persona(1,"Pedro May","Administración de Empresas","Medico","pedro@gmail.com","9831235432"),
 						new Persona(23,"Tendor Yam","Química de Empresas","Medico","tendor@gmail.com","9831235432"),
