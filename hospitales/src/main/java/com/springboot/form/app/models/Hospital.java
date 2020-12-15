@@ -1,61 +1,54 @@
 package com.springboot.form.app.models;
 
 import javax.persistence.*;
-
-@Entity
-@Table(name="hospital")
 public class Hospital	{
 	
-	//Atributos
-	@Id
-	@Column(name="id")
+
 	private Integer id;
-	
-	@Column(name="Nombre")
+
 	private String nombre;
 
-	@Column(name="Direccion")
 	private String direccion;
 
-	@Column(name="Municipio")
+
 	private String municipio;
 
-	@Column(name="Telefono")
+
 	private String telefono;
 
-	@Column(name="No_Medicos")
+
 	private Integer noMedicos;
 
-	@Column(name="No_enfermeros")
+
 	private Integer noEnfermeros;
 	
 
-	@Column(name="No_Ambulancias")
+
 	private Integer noAmbulacias;
 
-	@Column(name="No_Camillas")
+
 	private Integer noCamillas;
 
-	@Column(name="No_Cuartos")
+
 	private Integer noCuartos;
 
-	@Column(name="No_Laboratorios")
+
 	private Integer noLab;
 
-	@Column(name="Servicios")
+
 	private String servicios;
 	
 
-	@Column(name="id_Director")
+
 	private Persona director;
 
-	@Column(name="id_Subdirector")
+
 	private Persona subdirector;
 
-	@Column(name="id_Administrador")
+
 	private Persona administrador;
 
-	@Column(name="id_Covid")
+
 	private Covid covid;
 	
 	public Hospital() {

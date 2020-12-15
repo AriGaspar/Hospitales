@@ -10,6 +10,10 @@ public class Covid {
 	private Integer defunciones;
 	private Integer recuperados;
 	
+	public Covid() {
+		
+	}
+	
 	public Covid(Integer id, Integer negativos, Integer estudios, Integer positivos, Integer defunciones,
 			Integer recuperados) {
 		this.id = id;

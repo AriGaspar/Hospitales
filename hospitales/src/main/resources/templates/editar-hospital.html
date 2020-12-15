@@ -10,16 +10,18 @@
 	th:href="@{/css/resultados-style.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/hospital-style.css}">
-<title th:text="${hospital.get(0).getNombre()}"></title>
+<title th:text="${hospital.getNombre()}"></title>
 
 </head>
 
 <body>
-	<div th:object="${hospital.get(0)}">
+	<div th:object="${hospital}">
 			<form th:action="@{/hospital}" method="POST">
 				<div class="float-container">
 					<div class="float-child">
 					
+						<input maxlength="50" type="hidden" id="id" name="id" ><br>
+						<label>Nombre:</label> 
 						<label>Nombre:</label> 
 						<input maxlength="50" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
 						
