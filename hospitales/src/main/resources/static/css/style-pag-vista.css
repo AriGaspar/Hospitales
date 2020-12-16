@@ -58,10 +58,10 @@ tbody tr {
 /* "Boton" agregar */
 
 .div_centrado {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    padding: 0px 0px 25px 0px;
+ position: absolute; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0px 0px px 0px;
 }
 /* Fin de "Boton" agregar */
 
