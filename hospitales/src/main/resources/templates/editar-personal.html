@@ -12,7 +12,7 @@
 <body class="edit">
 	<div style="display: grid; place-items:center; margin-top:5em;">
 		<form th:object="${persona}" th:action="@{/personal}" method="post">
-			<div >
+			<div>
 					<h2 align="center" th:text="${persona.getCargo()}"></h2>
 					<h5 align="center" th:text="${persona.getDeHospital()}"></h5>
 					<br>
