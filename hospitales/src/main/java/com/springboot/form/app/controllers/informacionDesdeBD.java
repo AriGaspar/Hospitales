@@ -106,7 +106,8 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
 		
 	}
 
-
+	
+	
 	public Integer getIndexHospitalDeHospitales(List<Hospital> hospital) {
 		for (int i = 0; i < this._hospitales.size(); i++) {
 			if(this._hospitales.get(i).getId()==hospital.get(0).getId()) {
@@ -199,5 +200,10 @@ public class informacionDesdeBD implements obtenerInfoDesdeBD{
         str=filterStr.replaceAll("-", "");
         return Integer.parseInt(str.substring(0, 3));
     }
+
+
+	public void eliminarRegistro(Integer id) {
+		this.h.deleteById(id);
+	}
 	
 }

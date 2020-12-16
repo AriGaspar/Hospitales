@@ -21,5 +21,6 @@ public interface obtenerInfoDesdeBD {
 	public void setPersonal(Persona p);
 	public List<Covid> getRegistrosCovid();
 	public void setCovid(Covid c);
+	public void eliminarRegistro(Integer id);
 	
 }

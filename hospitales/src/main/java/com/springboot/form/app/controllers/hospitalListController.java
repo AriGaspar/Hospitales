@@ -40,10 +40,10 @@ public class hospitalListController {
 	
 	}
 	
-	@RequestMapping(value = "/lista-hospitales/{id}", method = RequestMethod.DELETE)
-	public String borrarDatosHospitales(@PathVariable Integer id) {
+	@RequestMapping("/empDelete")
+	public String borrarDatosHospitales(@RequestParam(value = "id") Integer id) {
 
-		System.out.println("Esto a eliminar: "+id);
+		servicio.eliminarRegistro(id);
 		
 		return "redirect:/lista-hospitales";
 	}

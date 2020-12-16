@@ -25,7 +25,7 @@
 			</ul>
 		</div>
 	</nav>
-	<form th:action="@{/lista-hospitales(id=${hospital.getId()})}" method="delete">
+<!-- 	<form th:action="@{/lista-hospitales(id=${hospital.getId()})}" method="delete"> -->
 		<div class="table-responsive-xl">
 			<table class="table table-borderless"
 				style="border-collapse: separate; border-spacing: 0px 10px;">
@@ -61,9 +61,9 @@
 						<td th:text="${hospital.noLab}"></td>
 						<td th:text="${hospital.getServiciosSeparadosSaltosLinea()}"></td>
 						<td>
-							<a class="" th:href="@{/eli(id=${hospital.id})}">
+							<a th:href="@{/empDelete(id=${hospital.getId()})}">
 								<img th:src="@{/images/Eliminar.png}" style="width: 25px;">
-							</a> 
+							</a>
 							<a th:href="@{/hospital(nombre=${hospital.nombre})}">
 								<img th:src="@{/images/editar.png}" style="width: 25px;">
 							</a>
@@ -73,7 +73,7 @@
 			</table>
 
 		</div>
-	</form>
+<!-- 	</form> -->
 	<a class="fixed-bottom mx-auto mb-5" th:href="@{/insertar-hospital}">
 		<img class="fixed-bottom mx-auto mb-5" width="120px" height="120px"
 		alt="" th:src="@{/images/Agregar.png}">
