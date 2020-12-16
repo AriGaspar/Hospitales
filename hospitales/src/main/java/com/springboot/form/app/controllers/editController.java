@@ -31,7 +31,8 @@ public class editController {
 	}
 	
 	@PostMapping("/hospital")
-	public String actualizarDatosHospitales(Hospital hospital , Model model) {
+	public String actualizarDatosHospitales(Hospital hospital , Integer id , Model model) {
+		hospital.setId(id);
 		servicio.setHospital(hospital);//Establece el hospital modificado dentro de la lista hospitales
 		
 		return "redirect:/lista-hospitales";//Actualiza la pagina de todos los hospitales
@@ -46,7 +47,6 @@ public class editController {
 	public String actualizarDatosCovid(@ModelAttribute Covid covid , Model model) {
 		
 		servicio.setCovid(covid);
-		
 		return "redirect:/lista-covid";//Actualiza la pagina de todos los hospitales
 	}
 	
@@ -105,7 +105,7 @@ public class editController {
 
 		Hospital hospTemp = new Hospital();
 		
-		List<Hospital> hospitalDesdeDB=servicio.getG();
+		List<Hospital> hospitalDesdeDB=servicio.getHospitalesDesdeBD();
 		for (Hospital h : hospitalDesdeDB) {
 			try {
 				if(h.getNombre().equals(_name)) {

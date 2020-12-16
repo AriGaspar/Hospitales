@@ -1,16 +1,39 @@
 package com.springboot.form.app.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "persona")
 public class Persona {
 
-	private Integer codigo;
-	private String cargo;
-	private String nombre;
-	private String titulo;
-	private String profesion;
-	private String email;
-	private String telefono;
-	private String dehospital;
 	
+	@Id
+	@Column(name="Codigo")
+	private Integer codigo;
+	
+	@Column(name="Nombre")
+	private String nombre;
+	
+	@Column(name="Titulo")
+	private String titulo;
+	
+	@Column(name="Profesion")
+	private String profesion;
+	
+	@Column(name="Correo_electronico")
+	private String email;
+	
+	@Column(name="Telefono")
+	private String telefono;
+
+	
+	
+	
+	private String dehospital;
+	private String cargo;
 	public Persona() {
 	
 	}

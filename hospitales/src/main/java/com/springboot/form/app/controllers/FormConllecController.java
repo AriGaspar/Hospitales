@@ -16,9 +16,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.springboot.form.app.models.Covid;
+import com.springboot.form.app.models.ADMINISTRADORES;
+import com.springboot.form.app.models.Covid2;
+import com.springboot.form.app.models.DIRECTORES;
+import com.springboot.form.app.models.HOSPITALS;
 import com.springboot.form.app.models.Hospital;
 import com.springboot.form.app.models.Persona;
+import com.springboot.form.app.models.SUBDIRECTORES;
 
 
 
@@ -31,13 +35,13 @@ public class FormConllecController {
 		this.servicio=servicio;
 	}
 	
-	@GetMapping("/formCollec")
+	@GetMapping("/insertar-hospital")
 	public String collec(Hospital hospital) {
 		System.out.println("id   "+ generateUniqueId());
 		return "formCollec";
 	}
 	
-	@PostMapping("/formCollec")
+	@PostMapping("/insertar-hospital")
 	public String visualis(@RequestParam String nombreDirector,
 			@RequestParam String tituloDirector,
 			@RequestParam String profecionDirector,
@@ -75,11 +79,11 @@ public class FormConllecController {
 			@RequestParam String servicioHos) {
 		
 		
-		Hospital hos=new Hospital(generateUniqueId(), nombreHos, direccionHos,municipioHos,telefonoH,nMedicos,nEnfermos,nAmbulancias,nCamillas,nCuartos,nLaboratorios, servicioHos, 
-				new Persona(generateUniqueId(),nombreDirector,tituloDirector,profecionDirector,emailDirector,telefDirector.toString()),
-				new Persona(generateUniqueId(),nombreSubdirector,tituloSubdirector,profecionSubdirector,emailSubdirector,telefSubdirector.toString()),
-				new Persona(generateUniqueId(),nombreAdministrador,tituloAdministrador,profecionAdministrador,emailAdministrador,telefAdministrador.toString()),
-				new Covid(generateUniqueId(),casosNeg,casosEstudio,casosPositi,Recuperados,Defunciones));
+		HOSPITALS hos=new HOSPITALS(generateUniqueId(), nombreHos, direccionHos,municipioHos,telefonoH,nMedicos,nEnfermos,nAmbulancias,nCamillas,nCuartos,nLaboratorios, servicioHos, 
+				new DIRECTORES(generateUniqueId(), new Persona(generateUniqueId(),nombreDirector,tituloDirector,profecionDirector,emailDirector,telefDirector.toString())),
+				new SUBDIRECTORES(generateUniqueId(), new Persona(generateUniqueId(),nombreSubdirector,tituloSubdirector,profecionSubdirector,emailSubdirector,telefSubdirector)),
+				new ADMINISTRADORES(generateUniqueId(), new Persona(generateUniqueId(),nombreAdministrador,tituloAdministrador,profecionAdministrador,emailAdministrador,telefAdministrador)),
+				new Covid2(generateUniqueId(),casosNeg,casosEstudio,casosPositi,Recuperados,Defunciones));
 		servicio.setNewHospital(hos);
 		
 		return "redirect:/formCollec";

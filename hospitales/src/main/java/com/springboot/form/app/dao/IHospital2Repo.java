@@ -6,10 +6,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import com.springboot.form.app.models.HOSPITALS;
 import com.springboot.form.app.models.Hospital2;
 
 
 @Repository
-public interface IHospital2Repo extends JpaRepository<Hospital2, Integer>{
+public interface IHospital2Repo extends JpaRepository<HOSPITALS, Integer>{
 	
 }

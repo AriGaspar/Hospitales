@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springboot.form.app.dao.IAdministradorRepo;
@@ -35,6 +40,14 @@ public class hospitalListController {
 	
 	}
 	
+	@RequestMapping(value = "/lista-hospitales/{id}", method = RequestMethod.DELETE)
+	public String borrarDatosHospitales(@PathVariable Integer id) {
+
+		System.out.println("Esto a eliminar: "+id);
+		
+		return "redirect:/lista-hospitales";
+	}
+	
 	@GetMapping("/lista-hospitales")
 	public String mostrarDatosHospitales(Model model) {
 
@@ -45,7 +58,7 @@ public class hospitalListController {
 
 	@GetMapping("/lista-personal")
 	public String mostrarDatosPersonal(Model model) {
-
+		
 		model.addAttribute("personal", servicio.getPersonal());
 
 		return "lista-persona";
@@ -59,30 +72,7 @@ public class hospitalListController {
 		return "lista_covid";
 	}
 
-	// Obtiene todo los registros del personal de todos los hospitales
-	private List<Persona> getPersonal(List<Hospital> h) {
-		List<Persona> p = new ArrayList<Persona>();
-
-		for (int i = 0; i < h.size(); i++) {
-			p.add(h.get(i).get_director());// Director
-			p.add(h.get(i).get_subdirector());// Subdirector
-			p.add(h.get(i).get_administrador());// Administrador
-		}
-
-		return p;
-	}
-
-	// Obtiene todo los registros de COVID de todos los hospitales
-	private List<Covid> getCovid(List<Hospital> h) {
-		List<Covid> c = new ArrayList<Covid>();
-
-		for (int i = 0; i < h.size(); i++) {
-			c.add(h.get(i).get_covid());// Covid
-		}
-
-		return c;
-	}
-
+	
 
 	
 }
