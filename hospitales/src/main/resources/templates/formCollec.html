@@ -10,286 +10,440 @@
 	th:href="@{/css/hospital-style.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/editar-style.css}">
-<title th:text="${titulo}"></title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/style-pag-vista.css}">
+<title>Insertar Hospital</title>
 
 <link rel="stylesheet" href="hospital-style.css">
 </head>
-<body>
-	<h1 th:text="${titulo}"></h1>
-	<form style="color: black;" th:action="@{/formCollec}" method="post">
+<body class="edit">
+	<div class="wrapper">
+		<form style="color: black;" th:action="@{/insertar-hospital}" method="post">
 
-		<table>
+			<!--//////////////////////////////////Formulario de Datos Generales////////////////////////////////////////////////////////////-->
 
-			<tr>
-				<th>
-					<!--////////////////////////////////Formulario de los Directores///////////////////////////////////////////////////////////////-->
-					<div style="width: 450px;" class="card">
-						<div class="card-header">
-							<h3 class="card-title">Datos Director</h3>
+			<div id="hospital" class="justify-content-center">
+				<div style="width: 700px;" class="card drop m-5 pr-5 pl-5">
+					<div class="card-body pr-5 pl-5">
+						<h3 class="mt-5" align="center">Datos del Hospital</h3>
+						
+						<div class="mb-3">
+							<br> <label for="nombreHos" class="form-label">Nombre</label>
+							<span> <input width="100%" maxlength="50" type="text" class="form-control"
+								name="nombreHos" id="nombreHos">
+							</span>
 						</div>
-						<div class="card-body">
 
-							<div class="mb-3">
-
-								<br> <label for="nombreDirector" class="form-label">Nombre:</label>
-								<input type="text" class="form-control" name="nombreDirector"
-									id="nombreDirector">
-									<small class="form-text text-danger" ></small>
-							</div>
-
-							<div class="mb-3">
-								<label for="tituloDirector" class="form-label">Titulo:</label> <input
-									type="text" class="form-control" name="tituloDirector"
-									id="tituloDirector">
-									<small class="form-text text-danger" ></small>
-							</div>
-
-							<div class="mb-3">
-								<label for="profecionDirector" class="form-label">Profeción:</label>
-								<input type="text" class="form-control" name="profecionDirector"
-									id="profecionDirector">
-									<small class="form-text text-danger" ></small>
-							</div>
-
-							<div class="mb-3">
-								<label for="emailDirector" class="form-label">Email:</label> <input
-									type="text" class="form-control" name="emailDirector"
-									id="emailDirector">
-									<small class="form-text text-danger" ></small>
-							</div>
-
-							<div class="mb-3">
-								<label for="telefDirector" class="form-label">Teléfono</label> <input
-									type="number" class="form-control" name="telefDirector"
-									id="telefDirector">
-									<small class="form-text text-danger" ></small>
-							</div>
-
-
+						<div class="mb-3">
+							<label for="direccionHos" class="form-label">Dirección</label> 
+							<input width="100%" maxlength="50" type="text" class="form-control" name="direccionHos" id="direccionHos">
 						</div>
-					</div>
-				</th>
 
-				<th>
-					<!--//////////////////////////////////Formulario de los Subdirectores////////////////////////////////////////////////////////////-->
-
-					<div style="width: 450px;" class="card">
-						<div class="card-header">
-							<h3 class="card-title">Datos Subdirector</h3>
+						<div class="mb-3">
+							<label for="municipioHos" class="form-label">Municipio</label> <input
+								width="100%" maxlength="50" type="text" class="form-control" name="municipioHos"
+								id="municipioHos">
 						</div>
-						<div class="card-body">
+						
+						<div class="mb-3">
+							<label for="telefonoH" class="form-label">Teléfono</label> 
+							<input maxlength="50" type="text" class="form-control" name="telefonoH" id="telefonoH">
+						</div>
 
-							<div class="mb-3">
-
-								<br> <label for="nombreSubdirector" class="form-label">Nombre:</label>
-								<input type="text" class="form-control" name="nombreSubdirector"
-									id="nombreSubdirector">
-									<small class="form-text text-danger" ></small>
+						<div class="row justify-content-center mt-4">
+							<div class="col-2">
+								<label for="nMedicos" class="form-label">No. Medicos</label>
 							</div>
-
-							<div class="mb-3">
-								<label for="tituloSubdirector" class="form-label">Titulo:</label>
-								<input type="text" class="form-control" name="tituloSubdirector"
-									id=tituloSubdirector>
-									<small class="form-text text-danger"></small>
+							<div class="col-2">
+								<input type="number" class="form-control" name="nMedicos"
+									id="nMedicos">
 							</div>
-
-							<div class="mb-3">
-								<label for="profecionSubdirector" class="form-label">Profeción:</label>
-								<input type="text" class="form-control"
-									name="profecionSubdirector" id="profecionSubdirector">
-									<small class="form-text text-danger"></small>
+							<div class="col-2">
+								<label for="nAmbulancias" class="form-label">No.
+									Ambulancias</label>
 							</div>
-
-							<div class="mb-3">
-								<label for="emailSubdirector" class="form-label">Email:</label>
-								<input type="text" class="form-control" name="emailSubdirector"
-									id="emailSubdirector">
-									<small class="form-text text-danger"></small>
+							<div class="col-2">
+								<input type="number" class="form-control" name="nAmbulancias"
+									id="nAmbulancias">
 							</div>
-
-							<div class="mb-3">
-								<label for="telefSubdirector" class="form-label">Teléfono</label>
-								<input type="number" class="form-control" name="telefSubdirector"
-									id="telefSubdirector">
-									<small class="form-text text-danger"></small>
+							<div class="col-2">
+								<label for="nCuartos" class="form-label">No. Cuartos</label>
 							</div>
+							<div class="col-2">
+								<input type="number" class="form-control" name="nCuartos"
+									id="nCuartos">
+							</div>
+						</div>
+						<!-- 						asda -->
+						<div class="row justify-content-center mt-4">
+							<div class="col-2">
+								<label for="nEnfermos" class="form-label">No. Enfermos</label>
+							</div>
+							<div class="col-2">
+								<input type="number" class="form-control" name="nEnfermos"
+									id="nEnfermos">
+							</div>
+							<div class="col-2">
+								<label for="nCamillas" class="form-label">No. Camillas</label>
+							</div>
+							<div class="col-2">
+								<input type="number" class="form-control" name="nCamillas"
+									id="nCamillas">
+							</div>
+							<div class="col-2">
+								<label for="nLaboratorios" class="form-label">No.
+									Laboratorios</label>
+							</div>
+							<div class="col-2">
+								<input type="number" class="form-control" name="nLaboratorios"
+									id="nLaboratorios">
+							</div>
+						</div>
 
-
+						<div class="mb-5 mt-5">
+							<label for="servicioHos" class="form-label">Servicios</label>
+							<textarea class="form-control" id="servicioHos" name="servicioHos" rows="3" cols="0">
+							</textarea>
 						</div>
 					</div>
+				</div>
+				
+			</div>
+		
+			<div id="personal" class="mt-5" >
+			<div class="wrapperP">
+				<div class="card drop director" style="width: 400px;float:left !important;">
+						<div class="card-body mt-5">
 
-				</th>
-
-				<th>
-					<!--//////////////////////////////////Formulario de los Administradores////////////////////////////////////////////////////////////-->
-					<div style="width: 450px;" class="card">
-						<div  class="card-header">
-							<h3 class="card-title">Datos de Administrador</h3>
-						</div>
-						<div class="card-body">
+							<h3 align="center" class="mb-4 mt-4">Datos Director</h3>
 
 							<div class="mb-3">
+								<div class="row justify-content-center">
 
-								<br> <label for="nombreAdministrador" class="form-label">Nombre:</label>
-								<input type="text" class="form-control"
-									name="nombreAdministrador" id="nombreAdministrador">
-									<small class="form-text text-danger"></small>
+									<div class="col-2">
+										<label>Nombre:</label>
+									</div>
+									<div class="col-8">
+
+										<input maxlength="50" type="text" style="width: 90%;" class="form-control"
+											name="nombreDirector" id="nombreDirector">
+									</div>
+
+								</div>
+
 							</div>
 
 							<div class="mb-3">
-								<label for="tituloAdministrador" class="form-label">Titulo:</label>
-								<input type="text" class="form-control"
-									name="tituloAdministrador" id="tituloAdministrador">
-									
+								<div class="row justify-content-center">
+
+									<div class="col-2">
+										<label for="tituloDirector" style="font-size: 17px"
+											class="form-label">Titulo:</label>
+									</div>
+									<div class="col-8">
+
+										<input maxlength="50" type="text" class="form-control" name="tituloDirector"
+											id="tituloDirector">
+									</div>
+
+								</div>
 							</div>
 
 							<div class="mb-3">
-								<label for="profecionAdministrador" class="form-label">Profeción:</label>
-								<input type="text" class="form-control"
-									name="profecionAdministrador" id="profecionAdministrador">
-									
-							</div>
+								<div class="row justify-content-center">
 
-							<div class="mb-3">
-								<label for="emailAdministrador" class="form-label">Email:</label>
-								<input type="text" class="form-control"name="emailAdministrador" id="emailAdministrador">
-									
-							</div>
+									<div class="col-2">
+										<label for="profecionDirector" style="font-size: 17px"
+											class="form-label">Profesión:</label>
+									</div>
+									<div class="col-8">
+										<input maxlength="50" type="text" class="form-control"
+											name="profecionDirector" id="profecionDirector">
+									</div>
 
-							<div class="mb-3">
-								<label for="telefAdministrador" class="form-label">Teléfono</label>
-								<input type="number" class="form-control" name="telefAdministrador" id="telefAdministrador">
+								</div>
 							</div>
 							
-						</div>
-					</div>
-				</th>
-				<th>
-					<!--//////////////////////////////////Formulario de Covid-19////////////////////////////////////////////////////////////-->
-					<div style="width: 450px;" class="card">
-						<div class="card-header">
-							<h3 class="card-title">Datos Covid-19</h3>
-						</div>
-						<div class="card-body">
-
 							<div class="mb-3">
+								<div class="row justify-content-center">
+									<div class="col-2">
+										<label for="emailDirector" style="font-size: 17px"
+											class="form-label">Email:</label>
+									</div>
+									<div class="col-8">
+										<input maxlength="100" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" class="form-control" name="emailDirector"
+											id="emailDirector">
+									</div>
 
-								<br> <label for="casosNeg" class="form-label">Casos
-									Negativos:</label> <input type="number" class="form-control"
-									name="casosNeg" id="casosNeg">
-									
+								</div>
 							</div>
 
-							<div class="mb-3">
-								<label for="casosEstudio" class="form-label">Casos en
-									Estudio:</label> <input type="number" class="form-control"
-									name="casosEstudio" id="casosEstudio">
-									
-							</div>
+							<div class="mb-4">
+								<div class="row justify-content-center mb-5">
 
-							<div class="mb-3">
-								<label for="casosPositi" class="form-label">Casos
-									Positivos:</label> <input type="number" class="form-control"
-									name="casosPositi" id="casosPositi">
-									
-							</div>
+									<div class="col-2">
+										<label for="telefDirector" style="font-size: 17px"
+											class="form-label">Teléfono</label>
+									</div>
+									<div class="col-8">
+										<input  maxlength="50" type="text" class="form-control" name="telefDirector"
+											id="telefDirector">
+									</div>
 
-							<div class="mb-3">
-								<label for="Recuperados" class="form-label">Recuperados:</label>
-								<input type="number" class="form-control" name="Recuperados"
-									id="Recuperados">
-									
-							</div>
-
-							<div class="mb-3">
-								<label for="Defunciones" class="form-label">Defunciones:</label>
-								<input type="number" class="form-control" name="Defunciones"
-									id="Defunciones">
+								</div>
 							</div>
 
 
 						</div>
 					</div>
-				</th>
-
-			</tr>
-			<tr>
+			
 
 
-				<th>
-					<!--//////////////////////////////////Formulario de Datos Generales////////////////////////////////////////////////////////////-->
-					<div style="width: 450px; hight: 50px;" class="card">
-						<div class="card-header">
-							<h3 class="card-title">Datos Generales</h3>
+				<!--//////////////////////////////////Formulario de los Subdirectores////////////////////////////////////////////////////////////-->
+				<div class="card subdirector" style="width: 400px; float:left !important;">
+					<div class="card-body mt-5">
+
+						<h3 align="center" class="mb-4 mt-4">Datos Subdirector</h3>
+
+						<div class="mb-3">
+							<div class="row justify-content-center">
+
+								<div class="col-2">
+									<label for="nombreSubdirector" class="form-label">Nombre:</label>
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="nombreSubdirector" id="nombreSubdirector">
+								</div>
+
+							</div>
+
 						</div>
-						<div class="card-body">
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center">
 
-							<div class="mb-3">
-								<br> <label for="nombreHos" class="form-label">Nombre</label>
-								<span> <input type="text" class="form-control"
-									name="nombreHos" id="nombreHos">
-								</span>
+								<div class="col-2">
+									<label for="tituloSubdirector" class="form-label">Titulo:</label>
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="tituloSubdirector" id=tituloSubdirector>
+								</div>
+
 							</div>
-							
-							<!-- -->
-							<div class="mb-3">
-								<label for="direccionHos" class="form-label">Dirección</label> <input
-									type="text" class="form-control" name="direccionHos"
-									id="direccionHos">
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center">
+								<div class="col-2">
+									<label for="profecionSubdirector" class="form-label">Profesión:</label>
+								</div>
+								<div class="col-8">
+									<input type="text" class="form-control"
+										name="profecionSubdirector" id="profecionSubdirector">
+								</div>
+							</div>
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center">
+								<div class="col-2">
+									<label for="emailSubdirector" class="form-label">Email:</label>
+								</div>
+								<div class="col-8">
+									<input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" class="form-control" name="emailSubdirector"
+										id="emailSubdirector">
+								</div>
+
+							</div>
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center mb-5">
+
+								<div class="col-2">
+									<label for="telefSubdirector" class="form-label">Teléfono</label>
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="telefSubdirector" id="telefSubdirector">
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+				<!--//////////////////////////////////Formulario de los Administradores////////////////////////////////////////////////////////////-->
+				<div class="card administrador" style="width: 400px;float:left !important;">
+					<div class="card-body mt-5">
+
+						<h3 align="center" class="mb-4  mt-4">Datos Administrador</h3>
+
+						<div class="mb-3">
+							<div class="row justify-content-center">
+
+								<div class="col-2">
+									<label for="nombreAdministrador" class="form-label">Nombre:</label>
+
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="nombreAdministrador" id="nombreAdministrador">
+								</div>
+
 							</div>
 
-							<div class="mb-3">
-								<label for="municipioHos" class="form-label">Municipio</label> <input
-									type="text" class="form-control" name="municipioHos"
-									id="municipioHos">
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center">
+
+								<div class="col-2">
+									<label for="tituloAdministrador" class="form-label">Titulo:</label>
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="tituloAdministrador" id="tituloAdministrador">
+								</div>
+
 							</div>
-							<div class="mb-3">
-								<label for="telefonoH" class="form-label">Teléfono</label> <input
-									type="text" class="form-control" name="telefonoH"
-									id="telefonoH">
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center">
+								<div class="col-2">
+									<label for="profecionAdministrador" class="form-label">Profesión:</label>
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="profecionAdministrador" id="profecionAdministrador">
+								</div>
 							</div>
-							<br>
-							<div class="col-md-2">
-								<span class="col-md-2"> <label for="nMedicos"
-									class="form-label">No. Medicos</label> <input type="number"
-									class="form-control" name="nMedicos" id="nMedicos">
-								</span> <span class="col-md-2"> <label for="nAmbulancias"
-									class="form-label">No. Ambulancias</label> <input type="number"
-									class="form-control" name="nAmbulancias" id="nAmbulancias">
-								</span> <span class="col-md-2"> <label for="nCuartos"
-									class="form-label">No. Cuartos</label> <input type="number"
-									class="form-control" name="nCuartos" id="nCuartos">
-								</span>
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center">
+								<div class="col-2">
+									<label for="emailAdministrador" class="form-label">Email:</label>
+								</div>
+								<div class="col-8">
+									<input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" class="form-control"
+										name="emailAdministrador" id="emailAdministrador">
+								</div>
+
 							</div>
-							<div class="col-md-2">
-								<span class="col-md-2"> <label for="nEnfermos"
-									class="form-label">No. Enfermos</label> <input type="number"
-									class="form-control" name="nEnfermos" id="nEnfermos">
-								</span> <span class="col-md-2"> <label for="nCamillas"
-									class="form-label">No. Camillas</label> <input type="number"
-									class="form-control" name="nCamillas" id="nCamillas">
-								</span> <span class="col-md-2"> <label for="nLaboratorios"
-									class="form-label">No. Laboratorios</label> <input type="number"
-									class="form-control" name="nLaboratorios" id="nLaboratorios">
-								</span>
+						</div>
+						<!-- ssasssssssssssssssssssssssssssssssssssssssssssssss -->
+						<div class="mb-3">
+							<div class="row justify-content-center mb-5">
+
+								<div class="col-2">
+									<label for="telefAdministrador" class="form-label">Teléfono</label>
+								</div>
+								<div class="col-8">
+									<input maxlength="50" type="text" class="form-control"
+										name="telefAdministrador" id="telefAdministrador">
+								</div>
+
 							</div>
-							<br>
-							<div class="mb-3">
-								<label for="servicioHos" class="form-label">Servicios</label> <input
-									type="text" class="form-control" name="servicioHos"
-									id="servicioHos">
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			</div>
+			<!--//////////////////////////////////Formulario de Covid-19////////////////////////////////////////////////////////////-->
+
+			<div id="covid">
+				<div class="card drop mt-5 mb-5">
+					<div class="card-body">
+						<h3 align="center" class="mb-4 mt-4">Registros de COVID-19</h3>
+						<div style="width: 400px;">
+							<div class="row justify-content-center mb-3">
+
+								<div class="col-5">
+									<label for="casosNeg" class="form-label">Casos Negativos:</label>
+								</div>
+								<div class="col-4">
+									<input class="form-control" style="width: 85px" min="0" max="1000000" type="number" id="casosNeg" name="casosNeg">
+								</div>
+
 							</div>
+
+							<div class="row justify-content-center mb-3">
+
+								<div class="col-5">
+									<label>Casos En Estudio:</label>
+								</div>
+
+								<div class="col-4">
+									<input class="form-control" style="width: 85px" min="0"
+										max="1000000" type="number" id="casosEstudio"
+										name="casosEstudio">
+								</div>
+
+							</div>
+
+							<div class="row justify-content-center mb-3">
+								<div class="col-5">
+									<label>Casos Positivos:</label>
+								</div>
+
+								<div class="col-4">
+									<input class="form-control" style="width: 85px" min="0"
+										max="1000000" type="number" id="casosPositi"
+										name="casosPositi">
+								</div>
+							</div>
+
+							<div class="row justify-content-center mb-3">
+								<div class="col-5">
+									<label>Defunciones:</label>
+								</div>
+								<div class="col-4">
+									<input class="form-control" style="width: 85px" min="0"
+										max="1000000" type="number" id="Defunciones"
+										name="Defunciones">
+								</div>
+							</div>
+
+							<div class="row justify-content-center mb-3">
+								<div class="col-5 mb-4">
+									<label>Recuperados:</label>
+								</div>
+								<div class="col-4">
+									<input class="form-control" style="width: 85px" min="0"
+										max="1000000" type="number" id="Recuperados"
+										name="Recuperados">
+								</div>
+							</div>
+
 						</div>
 					</div>
+				</div>
+				<!--Enviar formulario -->
+				<div class="row justify-content-center mb-3">
 
-				</th>
-
-			</tr>
-
-		</table>
-<input type="submit" value="envi">
-	</form>
-
+						<div class="col-5">
+							<button type="button" class="btn btn-danger"><a th:href="@{/lista-hospitales}" class="btn-danger" style="background-color: 0;"> Cancelar</a> </button>
+						</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="col-5">
+							<button type="submit" class="btn btn-success">Guardar</button>
+						</div>
+	
+				</div>
+				
+			</div>
+			
+		</form>
+	</div>
 </body>
 </html>

@@ -37,7 +37,7 @@ public class FormConllecController {
 	
 	@GetMapping("/insertar-hospital")
 	public String collec(Hospital hospital) {
-		System.out.println("id   "+ generateUniqueId());
+//		System.out.println("id   "+ generateUniqueId());
 		return "formCollec";
 	}
 	
@@ -86,7 +86,7 @@ public class FormConllecController {
 				new Covid2(generateUniqueId(),casosNeg,casosEstudio,casosPositi,Recuperados,Defunciones));
 		servicio.setNewHospital(hos);
 		
-		return "redirect:/formCollec";
+		return "redirect:/lista-hospitales";
 	}
 	public int generateUniqueId() {      
         UUID idOne = UUID.randomUUID();

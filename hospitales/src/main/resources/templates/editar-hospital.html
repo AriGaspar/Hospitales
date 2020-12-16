@@ -10,55 +10,91 @@
 	th:href="@{/css/resultados-style.css}">
 <link rel="stylesheet" type="text/css"
 	th:href="@{/css/hospital-style.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/editar-style.css}">	
 <title th:text="${hospital.getNombre()}"></title>
 
 </head>
 
-<body>
-	<div th:object="${hospital}">
+<body class="edit">
+	<h1 style="display: grid; place-items:center;margin-top: 1em;color:white;">Editar datos de hospital</h1>
+	<div th:object="${hospital}" style="display: grid; place-items:center;"> 
 			<form th:action="@{/hospital}" method="POST">
-				<div class="float-container">
-					<div class="float-child">
-						<input th:field="*{id}" type="hidden" id="id" name="id" th:placeholder="${hospital.getId()}" th:value="${hospital.getId()}">
-						<label>Nombre:</label> 
-						<input maxlength="50" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}"><br>
+				<div class="card drop m-5 pr-5 pl-5" style="background-color: #69C3DA !important;width: 720px">
+					<div class="card-body pr-5 pl-5" style="background-color: #69C3DA !important;">
+						<div class="mb-3 mt-4">
+							
+							 <label class="form-label">Nombre</label><br>
+							<input style="width:100%" maxlength="50" type="text" id="nombre" name="nombre" th:placeholder="*{getNombre()}" th:value="*{getNombre()}">
+						</div>
+
+						<div class="mb-3">
+							<label for="direccionHos" class="form-label">Dirección</label> <br>
+							<input style="width:100%" maxlength="50" type="text" id="direccion" name="direccion" th:placeholder="*{getDireccion()}" th:value="*{getDireccion()}">
+						</div>
+
+						<div class="mb-3">
+							<label for="municipioHos" class="form-label">Municipio</label> <br>
+							<input style="width:100%" maxlength="50" type="text" id="municipio" name="municipio" th:placeholder="*{getMunicipio()}" th:value="*{getMunicipio()}">
+						</div>
 						
-						<label>Dirección:</label> 
-						<input maxlength="50" type="text" id="direccion" name="direccion" th:placeholder="*{getDireccion()}" th:value="*{getDireccion()}"><br>
+						<div class="mb-3">
+							<label for="telefonoH" class="form-label">Teléfono</label> <br>
+							<input style="width:100%" max="9999999999" type="number" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}">
+						</div>
+
+						<div class="row justify-content-center mt-4">
+							<div class="col-2">
+								<label for="nMedicos" class="form-label">No. Medicos</label>
+							</div>
+							<div class="col-2">
+								<input style="width:80px" min="0" max="1000000" type="number" id="noMedicos" name="noMedicos" th:placeholder="*{getNoMedicos()}" th:value="*{getNoMedicos()}">
+							</div>
+							<div class="col-2">
+								<label for="nAmbulancias" class="form-label">No.
+									Ambulancias</label>
+							</div>
+							<div class="col-2">
+								<input style="width:80px" min="0" max="1000000" type="number" id="noAmbulacias" name="noAmbulacias" th:placeholder="*{getNoAmbulacias()}" th:value="*{getNoAmbulacias()}">
+							</div>
+							<div class="col-2">
+								<label for="nCuartos" class="form-label">No. Cuartos</label>
+							</div>
+							<div class="col-2">
+								<input style="width:80px" min="0" max="1000000" type="number" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}">
+							</div>
+						</div>
 						
-						<label>Municipio:</label> 
-						<input maxlength="50" type="text" id="municipio" name="municipio" th:placeholder="*{getMunicipio()}" th:value="*{getMunicipio()}"><br>
-						
-						<label>Teléfono:</label> 
-						<input max="9999999999" type="number" id="telefono" name="telefono" th:placeholder="*{getTelefono()}" th:value="*{getTelefono()}">  <br>
-						
-						<label>Servicios:</label> <br>				
-							<textarea id="servicios"  name="servicios" th:text="*{getServicios()}" th:value="*{getServicios()}" th:placeholder="*{getServicios()}" rows="3" cols="0" >
-							</textarea>
-						<br><br><br>
+						<div class="row justify-content-center mt-4">
+							<div class="col-2">
+								<label for="nEnfermos" class="form-label">No. Enfermos</label>
+							</div>
+							<div class="col-2">
+								<input style="width:80px" min="0" max="1000000" type="number" id="noEnfermeros" name="noEnfermeros" th:placeholder="*{getNoEnfermeros()}" th:value="*{getNoEnfermeros()}">
+							</div>
+							<div class="col-2">
+								<label for="nCamillas" class="form-label">No. Camillas</label>
+							</div>
+							<div class="col-2">
+								<input style="width:80px" min="0" max="1000000" type="number" id="noCamillas" name="noCamillas" th:placeholder="*{getNoCamillas()}" th:value="*{getNoCamillas()}">
+							</div>
+							<div class="col-2">
+								<label for="nLaboratorios" class="form-label">No. Laboratorios</label>
+							</div>
+							<div class="col-2">
+								<input style="width:80px" min="0" max="1000000" type="number" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}">
+							</div>
+						</div>
+
+						<div class="mb-5 mt-5">
+							<label for="servicioHos" class="form-label">Servicios</label>
+							<textarea class="form-control" id="servicios"  name="servicios" th:text="*{getServicios()}" th:value="*{getServicios()}" th:placeholder="*{getServicios()}" rows="3" cols="0"></textarea>
+						</div>
+							<div style="display: grid; place-items:center">
+								<button style="float:left" type="submit" class="btn btn-success mb-4">Actualizar</button>
+								<a  th:href="@{/lista-hospitales}" class="btn btn-danger mb-4">Cancelar</a>
+							</div>
 					</div>
-					<div class="float-child">
-						<label>No. Medicos:</label> 
-						<input min="0" max="1000000" type="number" id="noMedicos" name="noMedicos" th:placeholder="*{getNoMedicos()}" th:value="*{getNoMedicos()}"><br>
-						
-						<label>No. Enfermeros:</label> 
-						<input min="0" max="1000000" type="number" id="noEnfermeros" name="noEnfermeros" th:placeholder="*{getNoEnfermeros()}" th:value="*{getNoEnfermeros()}"><br>
-						
-						<label>No. Ambulancias:</label> 
-						<input min="0" max="1000000" type="number" id="noAmbulacias" name="noAmbulacias" th:placeholder="*{getNoAmbulacias()}" th:value="*{getNoAmbulacias()}"><br>
-						
-						<label>No. Camillas:</label> 
-						<input min="0" max="1000000" type="number" id="noCamillas" name="noCamillas" th:placeholder="*{getNoCamillas()}" th:value="*{getNoCamillas()}"><br>
-						
-						<label>No. Cuartos:</label> 
-						<input min="0" max="1000000" type="number" id="noCuartos" name="noCuartos" th:placeholder="*{getNoCuartos()}" th:value="*{getNoCuartos()}"><br>
-						
-						<label>No. Laboratorios:</label> 
-						<input min="0" max="1000000" type="number" id="noLab" name="noLab" th:placeholder="*{getNoLab()}" th:value="*{getNoLab()}"><br><br>
-						<button type="submit" class="btn btn-success">Guardar datos</button>
-						<a th:href="@{/lista-hospitales}" class="btn btn-danger"> Cancelar</a>
-					</div>
-					
 				</div>
 			</form>
 	</div>
